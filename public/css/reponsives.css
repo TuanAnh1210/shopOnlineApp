@@ -1,0 +1,45 @@
+/* mobile */
+@media (max-width: 576px) {
+    .header__logo img {
+        width: 152px;
+    }
+}
+
+/* mobile de ngang hoac tablet nho */
+@media (min-width: 576px) and (max-width:768px) {}
+
+/* tablet */
+@media (min-width: 768px) and (max-width: 992px) {}
+
+/* < tablet */
+@media (max-width: 992px) {
+    .header__nav {
+        position: absolute;
+        top: 34px;
+        left: 0;
+        width: 40vw;
+        height: 100vh;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        background-color: #fff;
+        transform: translateX(-110%);
+        transition: all linear .2s;
+    }
+
+
+    .header__item {
+        display: block;
+        padding: 12px 20px;
+    }
+
+    .header__bar {
+        display: block;
+    }
+
+    .close__item {
+        display: block;
+    }
+}
+
+
+/* pc nho */
+@media (min-width: 992px) and (max-width: 1200px) {}
