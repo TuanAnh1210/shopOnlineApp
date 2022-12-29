@@ -43,11 +43,15 @@
                         <p class="close__item">
                             <i class="fa-regular fa-circle-xmark close-btn"></i>
                         </p>
-                        <a class="header__item active" href="http://localhost/du_an_mau/">Trang chủ</a>
-                        <a class="header__item" href="http://localhost/du_an_mau/product">Sản phẩm</a>
-                        <a class="header__item" href="http://localhost/du_an_mau/gioi-thieu">Giới thiệu</a>
-                        <a class="header__item" href="#">Tin tức</a>
-                        <a class="header__item" href="http://localhost/du_an_mau/lien-he">Liên hệ</a>
+                        <a data-item="" class="header__item" href="http://localhost/du_an_mau/">Trang chủ</a>
+                        <a data-item="product" class="header__item" href="http://localhost/du_an_mau/product">Sản
+                            phẩm</a>
+                        <a data-item="gioi-thieu" class="header__item" href="http://localhost/du_an_mau/gioi-thieu">Giới
+                            thiệu</a>
+                        <a data-item="tin-tuc" class="header__item" href="http://localhost/du_an_mau/tin-tuc">Tin
+                            tức</a>
+                        <a data-item="lien-he" class="header__item" href="http://localhost/du_an_mau/lien-he">Liên
+                            hệ</a>
                     </nav>
                     <div class="header__actions">
                         <p class="header__search">

@@ -13,3 +13,15 @@ close_btn.onclick = () => {
     transform: "translateX(-110%)",
   });
 };
+
+// handle active header__item
+const items = document.querySelectorAll(".header__item");
+const pathPage = window.location.pathname;
+
+const arrPath = pathPage.split("/");
+
+items.forEach((item) => {
+  if (item.getAttribute("data-item") == arrPath[arrPath.length - 1]) {
+    item.classList.add("active");
+  }
+});

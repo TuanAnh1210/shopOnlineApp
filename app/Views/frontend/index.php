@@ -2,9 +2,79 @@
 
 
 
-<div class="banner">
-    <img style="width: 100%;" src="http://localhost/du_an_mau/public/imgs/banner1.jpg" alt="">
+<div class="content">
+    <div class=" banner1">
+        <img class="banner--img" src="http://localhost/du_an_mau/public/imgs/about1.png" alt="">
+
+        <div class="slider__scrool-textbox">
+            <span class="textbox-town">Paris</span>
+            <div class="textbox-town--wrapper">
+                <div class="textbox-town-sub">
+                    <strong>TOUR</strong>
+                    EIFFEL
+                </div>
+
+                <div class="textbox-town--tour">
+                    <p>CITY</p>
+                    <span>TOUR</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" banner2">
+        <img class="banner--img" src="http://localhost/du_an_mau/public/imgs/about2.png" alt="">
+        <div class="slider__scrool-textbox">
+            <span class="textbox-town">Paris</span>
+            <div class="textbox-town--wrapper">
+                <div class="textbox-town-sub">
+                    <strong>TOUR</strong>
+                    EIFFEL
+                </div>
+
+                <div class="textbox-town--tour">
+                    <p>CITY</p>
+                    <span>TOUR</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" banner3">
+        <img class="banner--img" src="http://localhost/du_an_mau/public/imgs/about3.png" alt="">
+        <div class="slider__scrool-textbox">
+            <span class="textbox-town">Paris</span>
+            <div class="textbox-town--wrapper">
+                <div class="textbox-town-sub">
+                    <strong>TOUR</strong>
+                    EIFFEL
+                </div>
+
+                <div class="textbox-town--tour">
+                    <p>CITY</p>
+                    <span>TOUR</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="banner4">
+        <img class="banner--img" src="http://localhost/du_an_mau/public/imgs/banner1.jpg" alt="">
+        <div class="slider__scrool-textbox">
+            <span class="textbox-town">Paris</span>
+            <div class="textbox-town--wrapper">
+                <div class="textbox-town-sub">
+                    <strong>TOUR</strong>
+                    EIFFEL
+                </div>
+
+                <div class="textbox-town--tour">
+                    <p>CITY</p>
+                    <span>TOUR</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
 <div class="subbanner">
     <img style="width: 100%;" src="http://localhost/du_an_mau/public/imgs/subbanner.png" alt="">
 </div>
@@ -74,8 +144,9 @@
                             if (!$item['discount']) {
                                 echo "hidden";
                             }
-                            ?> class="product__discount product__viewed"> <?= $item['view'] ?><i
-                        class="fa-regular fa-eye"></i></span>
+                            ?> class="product__discount product__viewed"> <?= $item['view'] ?>
+                    <i class="fa-regular fa-eye"></i>
+                </span>
             </div>
 
             <?php endforeach  ?>
@@ -122,7 +193,36 @@
     </div>
 </div>
 
+<style>
+.owl-nav {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+}
 
+.owl-prev,
+.owl-next {
+    background-color: #ccc !important;
+    width: 42px;
+    height: 42px;
+    border-radius: 50% !important;
+    display: flex;
+    align-items: center;
+}
+
+.owl-next span,
+.owl-prev span {
+    font-size: 34px;
+    display: inline-block;
+    height: 100%;
+    line-height: 36px;
+
+}
+</style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost/du_an_mau/public/lib/owl/owl.carousel.min.js"></script>
@@ -139,10 +239,10 @@ $(".owl-carousel").owlCarousel({
     nav: true,
     responsive: {
         0: {
-            items: 3,
+            items: 1,
         },
         600: {
-            items: 6,
+            items: 2,
         },
         1000: {
             items: 4,

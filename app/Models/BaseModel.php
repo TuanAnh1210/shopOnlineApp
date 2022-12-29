@@ -73,4 +73,11 @@ class BaseModel extends Database
         $sql = "Select ${cols} from ${table} ORDER BY ${depenent} ${option} LIMIT ${num}";
         return $data = $this->query_all($sql);
     }
+
+    public function getAllNew($table, $option = 'DESC', $select = ['*'], $depenent = 'id')
+    {
+        $cols = implode(',', $select);
+        $sql = "Select ${cols} from ${table} ORDER BY ${depenent} ${option}";
+        return $data = $this->query_all($sql);
+    }
 }
