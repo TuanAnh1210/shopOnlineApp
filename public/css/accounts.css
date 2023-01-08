@@ -1,0 +1,294 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+:root {
+    --height-header: 84px;
+
+    --primary-color: #000;
+    --black-color: #000;
+    --white-color: #fff;
+    --text-color: #242424;
+}
+
+html {
+    color: var(--text-color);
+}
+
+.main {
+    overflow: hidden;
+    /* position: relative; */
+}
+
+.account__wrapper {
+    height: 100vh;
+    background: url('http://localhost/du_an_mau/public/imgs/acc.jpg') center center / cover no-repeat;
+    display: flex;
+    margin: auto;
+    /* background-color: #0c0371;
+    background-image: linear-gradient(132deg, #0c0371 0%, #520b8b 100%); */
+
+
+}
+
+.form__wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 960px;
+    background-color: #fff;
+    margin: auto;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+
+.form__title {
+    color: var(--primary-color);
+    font-size: 22px;
+    padding-bottom: 16px;
+    font-weight: 700;
+    text-align: center;
+
+}
+
+.form__title.regis {
+    color: #6A16A0;
+
+}
+
+.form__group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4px;
+}
+
+.form__wrapper label {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.form__wrapper input {
+    font-size: 16px;
+    padding: 4px 16px;
+}
+
+.form__login {
+    background-color: var(--white-color);
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form__login.ani {
+    animation: rightOut linear .3s;
+}
+
+
+.btn__login {
+    background-color: #000000;
+    background-image: linear-gradient(132deg, #000000 0%, #1653a0 100%);
+
+    width: 100%;
+    margin-top: 20px;
+    color: var(--white-color);
+    border: none;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 8px 10px;
+    border-radius: 26px;
+    transition: all linear .2s;
+}
+
+.btn__regis:hover,
+.btn__login:hover {
+    background-color: #FF3CAC;
+    background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+    transition: all linear .2s;
+    cursor: pointer;
+}
+
+.btn__regis {
+    background-color: #000000;
+    background-image: linear-gradient(132deg, #000000 0%, #6a16a0 100%);
+
+
+
+    width: 100%;
+    margin-top: 20px;
+    color: var(--white-color);
+    border: none;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 8px 10px;
+    border-radius: 26px;
+    transition: all linear .2s;
+}
+
+
+
+.forgot__pass {
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 24px;
+    margin-top: 24px;
+    transition: all linear .3s;
+
+}
+
+.forgot__pass:hover {
+    text-decoration: underline;
+    transition: all linear .3s;
+}
+
+.form__regis {
+    background-color: var(--white-color);
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form__regis.ani {
+    animation: leftOut linear .3s;
+}
+
+.overlay_container {
+    position: absolute;
+    background-color: #000000;
+    background-image: linear-gradient(132deg, #000000 0%, #1653a0 100%);
+    width: 50%;
+    top: 0;
+    right: 0;
+    height: 100%;
+    display: flex;
+    margin: auto;
+    text-align: center;
+    transition: all linear .3s;
+
+}
+
+.overlay_container.isRegis {
+    transition: all linear .3s;
+    transform: translateX(-100%);
+    background-color: #000000;
+    background-image: linear-gradient(132deg, #000000 0%, #6a16a0 100%);
+}
+
+.overlay-login {
+    margin: auto;
+    padding: 0 32px;
+
+}
+
+.overlay-title {
+    color: var(--white-color);
+    font-size: 28px;
+    font-weight: 700;
+    text-shadow: 0 1px 2px #ccc;
+}
+
+.overlay-sub {
+    color: var(--white-color);
+    font-size: 16px;
+    font-weight: 400;
+    text-shadow: 0 1px 2px #ccc;
+    margin: 16px 0;
+}
+
+.overlay-btn {
+    background-color: transparent;
+    border: 1px solid #fff;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px 36px;
+    color: var(--white-color);
+    border-radius: 20px;
+    transition: all linear .2s;
+    margin-top: 18px;
+}
+
+.overlay-btn:hover {
+    background-color: #8BC6EC;
+    background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+
+    cursor: pointer;
+    transition: all linear .2s;
+
+}
+
+.isInfoLogin.close,
+.isInfoRegis.close {
+    display: none;
+}
+
+
+.error {
+    color: red;
+    font-size: 14px;
+    font-weight: 400;
+    height: 16px;
+    font-style: italic;
+}
+
+@keyframes rightOut {
+    from {
+        opacity: 1;
+        transform: translateX(0%);
+
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+@keyframes leftOut {
+    from {
+        opacity: 1;
+        transform: translateX(0%);
+
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
+
+
+@media (max-width: 576px) {
+    .form__wrapper {
+        width: auto;
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: auto;
+    }
+
+    .overlay_container {
+        width: 100%;
+        height: 50%;
+        bottom: 0;
+        top: auto;
+    }
+
+    .overlay_container.isRegis {
+        transform: translateY(-100%);
+
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .form__wrapper {
+        max-width: 720px;
+    }
+}

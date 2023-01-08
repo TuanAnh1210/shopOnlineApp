@@ -85,27 +85,30 @@
 
         <div class="owl-carousel owl-theme">
             <?php foreach ($data as $index => $item) : ?>
-            <div class="product__item">
-                <div class="product__img"><img src="http://localhost/du_an_mau/uploads/<?= $item['image'] ?>" alt="">
-                </div>
-                <h3 class="product__name"><?= $item['name'] ?></h3>
-                <div style="display: flex; justify-content: space-between;">
-                    <p class="product__price"><?= $item['price'] ?>đ</p>
-                    <p style="font-size: 12px; color: #555;"><?= $item['bought'] ?> đã bán</p>
-                </div>
-                <span <?php
-                            if (!$item['discount']) {
-                                echo "hidden";
-                            }
-                            ?> class="product__discount"> -<?= $item['discount'] ?>%</span>
+            <a href="http://localhost/du_an_mau/product/detail?prd&id=<?= $item['id'] ?>">
+                <div class="product__item">
+                    <div class="product__img"><img src="http://localhost/du_an_mau/uploads/<?= $item['image'] ?>"
+                            alt="">
+                    </div>
+                    <h3 class="product__name"><?= $item['name'] ?></h3>
+                    <div style="display: flex; justify-content: space-between;">
+                        <p class="product__price"><?= number_format($item['price'], 0, "", ".") ?>đ</p>
+                        <p style="font-size: 12px; color: #555;"><?= $item['bought'] ?> đã bán</p>
+                    </div>
+                    <span <?php
+                                if (!$item['discount']) {
+                                    echo "hidden";
+                                }
+                                ?> class="product__discount"> -<?= $item['discount'] ?>%</span>
 
-                <span <?php
-                            if (!$item['discount']) {
-                                echo "hidden";
-                            }
-                            ?> class="product__discount product__viewed"> <?= $item['view'] ?><i
-                        class="fa-regular fa-eye"></i></span>
-            </div>
+                    <span <?php
+                                if (!$item['discount']) {
+                                    echo "hidden";
+                                }
+                                ?> class="product__discount product__viewed"> <?= $item['view'] ?><i
+                            class="fa-regular fa-eye"></i></span>
+                </div>
+            </a>
 
             <?php endforeach ?>
 
@@ -121,33 +124,36 @@
 </div>
 
 <div class="container">
-    <h2 class="product__List--title">SẢN PHẨM BÁN CHẠY NHẤT</h2>
+    <h2 class="product__List--title">TOP 10 SẢN PHẨM YÊU THÍCH NHẤT</h2>
     <div class="product__list">
 
         <div class="owl-carousel owl-theme">
             <?php foreach ($bestseller as $index => $item) :  ?>
-            <div class="product__item">
-                <div class="product__img"><img src="http://localhost/du_an_mau/uploads/<?= $item['image'] ?>" alt="">
-                </div>
-                <h3 class="product__name"><?= $item['name'] ?></h3>
-                <div style="display: flex; justify-content: space-between;">
-                    <p class="product__price"><?= $item['price'] ?>đ</p>
-                    <p style="font-size: 12px; color: #555;"><?= $item['bought'] ?> đã bán</p>
-                </div>
-                <span <?php
-                            if (!$item['discount']) {
-                                echo "hidden";
-                            }
-                            ?> class="product__discount"> -<?= $item['discount'] ?>%</span>
+            <a href="http://localhost/du_an_mau/product/detail?prd&id=<?= $item['id'] ?>">
+                <div class="product__item">
+                    <div class="product__img"><img src="http://localhost/du_an_mau/uploads/<?= $item['image'] ?>"
+                            alt="">
+                    </div>
+                    <h3 class="product__name"><?= $item['name'] ?></h3>
+                    <div style="display: flex; justify-content: space-between;">
+                        <p class="product__price"><?= number_format($item['price'], 0, "", ".") ?>đ</p>
+                        <p style="font-size: 12px; color: #555;"><?= $item['bought'] ?> đã bán</p>
+                    </div>
+                    <span <?php
+                                if (!$item['discount']) {
+                                    echo "hidden";
+                                }
+                                ?> class="product__discount"> -<?= $item['discount'] ?>%</span>
 
-                <span <?php
-                            if (!$item['discount']) {
-                                echo "hidden";
-                            }
-                            ?> class="product__discount product__viewed"> <?= $item['view'] ?>
-                    <i class="fa-regular fa-eye"></i>
-                </span>
-            </div>
+                    <span <?php
+                                if (!$item['discount']) {
+                                    echo "hidden";
+                                }
+                                ?> class="product__discount product__viewed"> <?= $item['view'] ?>
+                        <i class="fa-regular fa-eye"></i>
+                    </span>
+                </div>
+            </a>
 
             <?php endforeach  ?>
 

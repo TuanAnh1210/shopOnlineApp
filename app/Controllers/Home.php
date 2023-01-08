@@ -14,7 +14,7 @@ class Home extends BaseController
     public function index()
     {
         $data = $this->homeModel->getProduct(5);
-        $bestseller = $this->homeModel->getProduct(5, 'DESC', ['*'], 'bought');
+        $bestseller = $this->homeModel->getProduct(10, 'DESC', ['*'], 'bought');
 
         return $this->view('frontend.index', [
             'data' => $data,

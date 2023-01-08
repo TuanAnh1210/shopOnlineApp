@@ -7,7 +7,10 @@
         <div class="product--top">
             <h2 style="font-size: 24px; font-weight: 400;">Sản phẩm</h2>
 
-
+            <div class="search__wrapper">
+                <input class="search__wrapper-ipt" type="text" placeholder="Tìm kiếm sản phẩm">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
 
             <div class="btn__actions">
 
@@ -114,13 +117,14 @@ function render(newList, temp = 0) {
 
     document.querySelector('.product__list-rd').innerHTML = newData.map((ele, index) => `
     <div class="col-12 col-md-4 col-lg-3">
+    <a href=http://localhost/du_an_mau/product/detail?prd&id=${ele.id}>
                     <div class="product__item">
                         <div class="product__img"><img src="http://localhost/du_an_mau/uploads/${ele.image}"
                                 alt="">
                         </div>
                         <h3 class="product__name">${ele.name}</h3>
                         <div style="display: flex; justify-content: space-between;">
-                            <p class="product__price">${ele.price}đ</p>
+                            <p class="product__price">${(ele.price).toLocaleString() }đ</p>
                             <p style="font-size: 12px; color: #555;">${ele.bought} đã bán</p>
                         </div>
                         <span 
@@ -134,6 +138,7 @@ function render(newList, temp = 0) {
 
                       
                     </div>
+                    </a>
                 </div>
     `).join('')
 }

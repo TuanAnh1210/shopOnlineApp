@@ -22,4 +22,22 @@ class Product extends BaseController
             'listProduct' => $listProduct
         ]);
     }
+
+    public function detail()
+    {
+
+        if (isset($_GET["prd"]) && !empty($_GET['id'])) {
+            $id = $_GET['id'];
+            $detailPrd = $this->productModel->getOne($id);
+            $cate = $detailPrd['category_id'];
+
+            // get products similar
+            $listProduct = $this->productModel->getPrdSimilar($cate, $id);
+        }
+
+        return $this->view('frontend.pages.detailPrd', [
+            'detailPrd' => $detailPrd,
+            'listProduct' => $listProduct
+        ]);
+    }
 }

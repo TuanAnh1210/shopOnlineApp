@@ -38,6 +38,10 @@
     .close__item {
         display: block;
     }
+
+    .search__wrapper {
+        width: auto;
+    }
 }
 
 

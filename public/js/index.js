@@ -24,4 +24,10 @@ items.forEach((item) => {
   if (item.getAttribute("data-item") == arrPath[arrPath.length - 1]) {
     item.classList.add("active");
   }
+  if (
+    item.getAttribute("data-item") == "product" &&
+    arrPath[arrPath.length - 1] == "detail"
+  ) {
+    item.classList.add("active");
+  }
 });
