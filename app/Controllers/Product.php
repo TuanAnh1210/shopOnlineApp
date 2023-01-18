@@ -3,6 +3,7 @@ class Product extends BaseController
 {
     private $productModel;
     private $cateModel;
+    private $cmtModel;
 
     public function __construct()
     {
@@ -11,12 +12,16 @@ class Product extends BaseController
 
         $this->loadModel('CategoryModel');
         $this->cateModel = new CategoryModel;
+
+        $this->loadModel('CommentModel');
+        $this->cmtModel = new CommentModel;
     }
 
     public function index()
     {
         $listCate = $this->cateModel->getAll();
         $listProduct = $this->productModel->getPrd();
+
         return $this->view('frontend.pages.product', [
             'listCate' => $listCate,
             'listProduct' => $listProduct
@@ -33,11 +38,35 @@ class Product extends BaseController
 
             // get products similar
             $listProduct = $this->productModel->getPrdSimilar($cate, $id);
+
+            $listCmt = $this->cmtModel->getAllCmt($id);
+
+            // up View
+            $this->productModel->upView($id);
         }
 
         return $this->view('frontend.pages.detailPrd', [
             'detailPrd' => $detailPrd,
-            'listProduct' => $listProduct
+            'listProduct' => $listProduct,
+            'listCmt' => $listCmt
+
         ]);
+    }
+
+    public function handleCmt()
+    {
+        if (!empty($_POST['cmt_user']) && !empty($_POST['idPrd'])) {
+            $contentCmt = $_POST['cmt_user'];
+            $product_id = $_POST['idPrd'];
+
+            $data = [
+                'content' => $contentCmt,
+                'comment_time' =>  date("Y-m-d H:i:s"),
+                'product_id' =>  $product_id,
+                'user_id' => $_SESSION['auth']['id']
+            ];
+
+            $this->cmtModel->addCmt($data);
+        }
     }
 }

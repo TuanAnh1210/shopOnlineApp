@@ -25,10 +25,28 @@
             <div class="header__heading--wrapper">
                 <div class="container">
                     <h2 class="header__heading">
+                        <?php if (empty($_SESSION)) : ?>
+
                         <a href="http://localhost/du_an_mau/account">
                             <span>Đăng nhập</span>
                             <i class="fa-regular fa-circle-user"></i>
                         </a>
+                        <?php endif ?>
+
+                        <?php if (!empty($_SESSION)) : ?>
+                        <div class="login__user">
+                            <span>Hi, <?php echo $_SESSION['auth']['fullname'] ?></span>
+                            <img style="width: 28px; height: 28px; border-radius: 50%; display: inline-block;"
+                                src="http://localhost/du_an_mau/uploads/<?php echo $_SESSION['auth']['avatar'] ?>"
+                                alt="">
+                            <ul class="login__actions">
+                                <li><a href="#">Tài khoản</a></li>
+                                <li><a href="#">Đơn hàng</a></li>
+                                <li><a href="#">Admin</a></li>
+                                <li><a href="http://localhost/du_an_mau/account/logout">Đăng xuất</a></li>
+                            </ul>
+                        </div>
+                        <?php endif ?>
 
                     </h2>
                 </div>

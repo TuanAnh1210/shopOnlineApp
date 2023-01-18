@@ -29,4 +29,10 @@ class ProductModel extends BaseModel
         $sql = "SELECT * from products where category_id = $cate AND id <> $id";
         return $this->query_all($sql);
     }
+
+    public function upView($id)
+    {
+        $sql = "UPDATE products SET view = view + 1 WHERE id = $id";
+        return $this->execute($sql);
+    }
 }

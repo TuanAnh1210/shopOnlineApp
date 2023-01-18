@@ -239,6 +239,26 @@ html {
     font-style: italic;
 }
 
+.flr {
+    flex-direction: row !important;
+    justify-content: space-evenly;
+}
+
+.flr div {
+    display: flex;
+    align-items: center;
+}
+
+.flr label {
+    margin-bottom: 0;
+}
+
+.flr div input {
+    width: 20px;
+    height: 20px;
+    margin-left: 6px;
+}
+
 @keyframes rightOut {
     from {
         opacity: 1;

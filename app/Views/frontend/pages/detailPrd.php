@@ -37,8 +37,19 @@ ipView('frontend.component.header');
                     </div>
 
                     <div class="button__control">
-                        <button class="add-cart">Thêm vào giỏ hàng</button>
-                        <button class="buy-prd">Mua ngay</button>
+
+                        <?php if (empty($_SESSION['auth'])) : ?>
+
+                        <a href="http://localhost/du_an_mau/account"><button class="add-cart">Thêm vào giỏ
+                                hàng</button></a>
+                        <a href="http://localhost/du_an_mau/account"><button class="buy-prd">Mua ngay</button><a>
+                                <?php endif ?>
+
+                                <?php if (!empty($_SESSION['auth'])) : ?>
+
+                                <button class="add-cart">Thêm vào giỏ hàng</button>
+                                <button class="buy-prd">Mua ngay</button>
+                                <?php endif ?>
                     </div>
 
                     <div class="detail__desc">
@@ -53,53 +64,58 @@ ipView('frontend.component.header');
             <h3 style="margin: 16px 0 24px 0;">Bình luận của khách hàng</h3>
             <div class="row">
                 <div class="col-12 col-md-5 col-lg-5">
+                    <?php if (!empty($_SESSION['auth'])) : ?>
                     <div class="commentBox">
                         <img class="commentBox--img"
-                            src="https://scontent.fhan14-2.fna.fbcdn.net/v/t39.30808-6/272631936_998241551114847_5199724819137837589_n.jpg?stp=dst-jpg_p843x403&_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=8zeYoPasY3UAX-0CPfG&_nc_ht=scontent.fhan14-2.fna&oh=00_AfDl1dKEB_PKWRhGdIyhltSbOX90KHRNUjup4InXLO_rJw&oe=63BD8472"
-                            alt="">
+                            src="http://localhost/du_an_mau/uploads/<?php echo $_SESSION['auth']['avatar'] ?>" alt="">
 
 
-                        <form class="form__comment">
-                            <textarea required class="commentBox--ipt" name="" id="" cols="30" rows="10"
+                        <form class="form__comment" method="POST" action="">
+                            <input hidden type="text" value="<?= $_GET['id']  ?>" name="idPrd">
+                            <textarea required class="commentBox--ipt" name="cmt_user" id="" cols="30" rows="10"
                                 placeholder="Gửi bình luận của bạn"></textarea>
                             <button class="send__comment">Gửi bình luận</button>
                         </form>
                     </div>
+                    <?php endif ?>
+
+                    <?php if (empty($_SESSION['auth'])) : ?>
+                    <div class="notAuth">
+
+
+
+                        <a class="notAuth--link" href="http://localhost/du_an_mau/account">Đăng nhập để mua sắm và bình
+                            luận</a>
+
+                    </div>
+                    <?php endif ?>
+
+
                 </div>
                 <div class="col-12 col-md-7 col-lg-7  lc">
+
+                    <?php if (count($listCmt) == 0) : ?>
+                    <h4 style="font-style: italic;">Chưa có ai bình luận , hãy là người bình luận đầu tiên...!</h4>
+                    <?php endif ?>
+
+                    <?php if (count($listCmt) > 0) : ?>
+                    <?php foreach ($listCmt as $index => $item) : ?>
                     <div class="commentBox">
                         <img class="commentBox--img"
                             src="https://scontent.fhan14-2.fna.fbcdn.net/v/t39.30808-6/272631936_998241551114847_5199724819137837589_n.jpg?stp=dst-jpg_p843x403&_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=8zeYoPasY3UAX-0CPfG&_nc_ht=scontent.fhan14-2.fna&oh=00_AfDl1dKEB_PKWRhGdIyhltSbOX90KHRNUjup4InXLO_rJw&oe=63BD8472"
                             alt="">
 
                         <div class="commentBox--right">
-                            <h5>Tuan Anh <span class="comment__time"> 10 phút trước</span></h5>
-                            <p class="commentBox--text">Sản phẩm như cứt</p>
+                            <h5><?= $item['fullname'] ?> <span class="comment__time"><?= $item['comment_time'] ?></span>
+                            </h5>
+                            <p class="commentBox--text"><?= $item['content'] ?></p>
                             <button class="delete__comment">Xóa bình luận</button>
                         </div>
                     </div>
-                    <div class="commentBox">
-                        <img class="commentBox--img"
-                            src="https://scontent.fhan14-2.fna.fbcdn.net/v/t39.30808-6/272631936_998241551114847_5199724819137837589_n.jpg?stp=dst-jpg_p843x403&_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=8zeYoPasY3UAX-0CPfG&_nc_ht=scontent.fhan14-2.fna&oh=00_AfDl1dKEB_PKWRhGdIyhltSbOX90KHRNUjup4InXLO_rJw&oe=63BD8472"
-                            alt="">
 
-                        <div class="commentBox--right">
-                            <h5>Tuan Anh <span class="comment__time"> 10 phút trước</span></h5>
-                            <p class="commentBox--text">Sản phẩm như cứt</p>
-                            <button class="delete__comment">Xóa bình luận</button>
-                        </div>
-                    </div>
-                    <div class="commentBox">
-                        <img class="commentBox--img"
-                            src="https://scontent.fhan14-2.fna.fbcdn.net/v/t39.30808-6/272631936_998241551114847_5199724819137837589_n.jpg?stp=dst-jpg_p843x403&_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=8zeYoPasY3UAX-0CPfG&_nc_ht=scontent.fhan14-2.fna&oh=00_AfDl1dKEB_PKWRhGdIyhltSbOX90KHRNUjup4InXLO_rJw&oe=63BD8472"
-                            alt="">
 
-                        <div class="commentBox--right">
-                            <h5>Tuan Anh <span class="comment__time"> 10 phút trước</span></h5>
-                            <p class="commentBox--text">Sản phẩm như cứt</p>
-                            <button class="delete__comment">Xóa bình luận</button>
-                        </div>
-                    </div>
+                    <?php endforeach ?>
+                    <?php endif ?>
 
                 </div>
             </div>

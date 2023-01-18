@@ -9,7 +9,11 @@
 @media (min-width: 576px) and (max-width:768px) {}
 
 /* tablet */
-@media (min-width: 768px) and (max-width: 992px) {}
+@media (min-width: 768px) and (max-width: 992px) {
+    .col-lg-6.col-md-12:first-child>.box__courses {
+        margin-top: 0;
+    }
+}
 
 /* < tablet */
 @media (max-width: 992px) {
@@ -42,6 +46,16 @@
     .search__wrapper {
         width: auto;
     }
+
+    .mt {
+        margin-top: 0;
+    }
+
+    .col-lg-6.col-md-12>.box__courses {
+        margin-top: 20px;
+    }
+
+
 }
 
 

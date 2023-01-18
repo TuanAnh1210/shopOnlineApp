@@ -1,4 +1,8 @@
-<?php ipView('frontend.component.header') ?>
+<?php
+
+ipView('frontend.component.header');
+$test = date("Y-m-d H:i:s");
+?>
 
 
 
