@@ -70,7 +70,7 @@ ipView('frontend.component.header');
                             src="http://localhost/du_an_mau/uploads/<?php echo $_SESSION['auth']['avatar'] ?>" alt="">
 
 
-                        <form class="form__comment" method="POST" action="">
+                        <form class="form__comment" method="POST" action="http://localhost/du_an_mau/comment/addCmt">
                             <input hidden type="text" value="<?= $_GET['id']  ?>" name="idPrd">
                             <textarea required class="commentBox--ipt" name="cmt_user" id="" cols="30" rows="10"
                                 placeholder="Gửi bình luận của bạn"></textarea>
@@ -101,8 +101,7 @@ ipView('frontend.component.header');
                     <?php if (count($listCmt) > 0) : ?>
                     <?php foreach ($listCmt as $index => $item) : ?>
                     <div class="commentBox">
-                        <img class="commentBox--img"
-                            src="https://scontent.fhan14-2.fna.fbcdn.net/v/t39.30808-6/272631936_998241551114847_5199724819137837589_n.jpg?stp=dst-jpg_p843x403&_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=8zeYoPasY3UAX-0CPfG&_nc_ht=scontent.fhan14-2.fna&oh=00_AfDl1dKEB_PKWRhGdIyhltSbOX90KHRNUjup4InXLO_rJw&oe=63BD8472"
+                        <img class="commentBox--img" src="http://localhost/du_an_mau/uploads/<?= $item['avatar'] ?>"
                             alt="">
 
                         <div class="commentBox--right">

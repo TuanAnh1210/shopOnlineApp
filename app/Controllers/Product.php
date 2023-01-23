@@ -52,21 +52,4 @@ class Product extends BaseController
 
         ]);
     }
-
-    public function handleCmt()
-    {
-        if (!empty($_POST['cmt_user']) && !empty($_POST['idPrd'])) {
-            $contentCmt = $_POST['cmt_user'];
-            $product_id = $_POST['idPrd'];
-
-            $data = [
-                'content' => $contentCmt,
-                'comment_time' =>  date("Y-m-d H:i:s"),
-                'product_id' =>  $product_id,
-                'user_id' => $_SESSION['auth']['id']
-            ];
-
-            $this->cmtModel->addCmt($data);
-        }
-    }
 }
