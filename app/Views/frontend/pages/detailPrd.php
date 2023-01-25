@@ -3,6 +3,15 @@ ipView('frontend.component.header');
 ?>
 
 <div class="detail__wrapper">
+    <div class="message__delete">
+        <h2>Bạn chắc chắn muốn xóa !!</h2>
+        <h4>Nếu xóa dữ liệu sẽ không thể khôi phục</h4>
+        <div class="btn__delete-container">
+            <button class="yes">Yes</button>
+            <button class="no">No</button>
+
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-6 col-lg-5">
@@ -108,7 +117,26 @@ ipView('frontend.component.header');
                             <h5><?= $item['fullname'] ?> <span class="comment__time"><?= $item['comment_time'] ?></span>
                             </h5>
                             <p class="commentBox--text"><?= $item['content'] ?></p>
-                            <button class="delete__comment">Xóa bình luận</button>
+                            <form class="form__update-cmt" action="http://localhost/du_an_mau/comment/updateCmt"
+                                method="POST">
+                                <input required class="comment__ipt--update" type="text" value="<?= $item['content'] ?>"
+                                    name="update_cmt">
+
+                                <input hidden type="text" value="<?= $item['product_id'] ?>" name="curPrd">
+                                <input hidden type="text" value="<?= $item['id_cmt'] ?>" name="curCmt">
+
+                                <button class="btn__save-cmt">Lưu</button>
+                            </form>
+
+                            <?php if (!empty($_SESSION['auth']) && $_SESSION['auth']['id'] == $item['id_user']) : ?>
+                            <button data-idPrd="<?= $item['product_id'] ?>" data-idCmt="<?= $item['id_cmt'] ?>"
+                                class="delete__comment">Xóa bình
+                                luận</button>
+
+                            <button onclick="handleUpdateCmt(this)" data-idPrd="<?= $item['product_id'] ?>"
+                                data-idCmt="<?= $item['id_cmt'] ?>" class="update__comment">Chỉnh sửa</button>
+                            <?php endif ?>
+
                         </div>
                     </div>
 
@@ -223,6 +251,48 @@ $(".owl-carousel").owlCarousel({
         },
     },
 });
+</script>
+
+<script>
+// handle delete comment products
+const delete__comments = document.querySelectorAll('.delete__comment')
+const message__delete = document.querySelector('.message__delete')
+const yesBtn = document.querySelector('.yes')
+const noBtn = document.querySelector('.no')
+
+delete__comments.forEach(item => {
+    item.onclick = () => {
+        const idCmt = item.getAttribute('data-idCmt')
+        const idPrd = item.getAttribute('data-idPrd')
+        message__delete.classList.add('open')
+
+        yesBtn.onclick = () => {
+            window.location.href =
+                `http://localhost/du_an_mau/comment/deleteCmt?id=${idCmt}&prdId=${idPrd}`
+        }
+
+        noBtn.onclick = () => {
+            message__delete.classList.remove('open')
+
+        }
+    }
+})
+
+
+
+
+// handle update comment
+const update__comments = document.querySelectorAll('.update__comment')
+
+const handleUpdateCmt = (item) => {
+    const commentBox__text = item.parentElement.querySelector('.commentBox--text')
+    const comment__ipt = item.parentElement.querySelector('.comment__ipt--update')
+    const form__update_cmt = item.parentElement.querySelector('.form__update-cmt')
+
+    commentBox__text.style.display = "none"
+    form__update_cmt.classList.add('open')
+    comment__ipt.focus()
+}
 </script>
 <?php
 ipView('frontend.component.footer')

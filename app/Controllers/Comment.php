@@ -29,4 +29,30 @@ class Comment extends BaseController
             header("location: http://localhost/du_an_mau/product/detail?prd&id=$product_id");
         }
     }
+
+    public function deleteCmt()
+    {
+        if (!empty($_GET['id']) && !empty($_GET['prdId'])) {
+            $id = $_GET['id'];
+            $idPrd = $_GET['prdId'];
+
+            $this->cmtModel->deleteCmt($id);
+
+            header("location: http://localhost/du_an_mau/product/detail?prd&id=$idPrd");
+        }
+    }
+
+    public function updateCmt()
+    {
+        if (!empty($_POST)) {
+            $product_id = $_POST['curPrd'];
+            $id_cmt = $_POST['curCmt'];
+
+            $update_cmt = $_POST['update_cmt'];
+
+            $this->cmtModel->updateCmt($update_cmt, $id_cmt);
+
+            header("location: http://localhost/du_an_mau/product/detail?prd&id=$product_id");
+        }
+    }
 }

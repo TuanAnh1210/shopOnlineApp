@@ -56,6 +56,92 @@ html *::-webkit-scrollbar-track {
     position: relative;
 }
 
+
+
+/* message delete */
+.message__succ,
+.message__delete {
+    z-index: 10;
+    display: none;
+    width: 400px;
+    height: 120px;
+    position: fixed;
+    right: 26px;
+    top: 20%;
+    background-color: #111;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    padding: 8px;
+    border-left: 6px solid orangered;
+    color: #fff;
+    animation: runIn linear .2s;
+}
+
+.message__succ.open,
+.message__delete.open {
+    display: block;
+}
+
+.message__succ h2,
+.message__delete h2 {
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.message__succ h4,
+.message__delete h4 {
+    font-size: 14px;
+
+    margin-left: 28px;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 32px;
+}
+
+.btn__delete-container {
+    margin-left: 18px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: end;
+}
+
+.yes_succ,
+.no,
+.yes {
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #fff;
+    color: #111;
+    padding: 4px 20px;
+
+}
+
+.yes_succ:hover,
+.no:hover,
+.yes:hover {
+    color: orangered;
+    cursor: pointer;
+}
+
+.no {
+    margin: 0 12px;
+}
+
+@keyframes runIn {
+    from {
+        transform: translateX(110%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* header */
+
 header {
     box-shadow: 0px 1px 0px rgb(0 0 0 / 10%);
     position: fixed;
@@ -620,13 +706,13 @@ footer {
     font-weight: 600;
     margin-bottom: 22px;
     color: #fff;
-    text-shadow: 0 0.2rem 0.2rem #0c71c3;
+    text-shadow: 0 0.2px 0.2px #0c71c3;
 }
 
 .about_intro-text p {
     color: #fff;
-    text-shadow: 0 0.2rem 0.2rem #0c71c3;
-    line-height: 1.8;
+    text-shadow: 0 0.2px 0.2px #0c71c3;
+    line-height: 18;
     font-size: 18px;
     text-align: justify;
 }
@@ -700,7 +786,7 @@ footer {
 }
 
 .about_textContent p {
-    line-height: 1.6;
+    line-height: 16;
     font-size: 18px;
     text-align: start;
 }
@@ -1175,7 +1261,9 @@ footer {
     border-radius: 8px;
 }
 
-.commentBox--text {}
+.commentBox--text {
+    margin-left: 12px;
+}
 
 .notAuth {}
 
@@ -1207,12 +1295,57 @@ footer {
     font-weight: 400;
 }
 
+.update__comment,
 .delete__comment {
     margin-top: 6px;
     border: none;
     color: #0c71c3;
     cursor: pointer;
 }
+
+.update__comment {
+    margin-left: 12px;
+}
+
+.form__update-cmt {
+    display: none;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 4px;
+    animation: ani linear .2s;
+
+}
+
+.comment__ipt--update {
+    display: block;
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding-left: 12px;
+    padding-bottom: 2px;
+    font-size: 16px;
+
+}
+
+.form__update-cmt.open {
+    display: flex;
+}
+
+.btn__save-cmt {
+    background-color: rgba(0, 0, 0, .3);
+    border: none;
+    border-radius: 8px;
+    color: var(--white-color);
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+.btn__save-cmt:hover {
+    background-color: rgba(0, 0, 0);
+    cursor: pointer;
+
+}
+
 
 
 /* info account */
@@ -1380,4 +1513,15 @@ footer {
 .box__courses--info a {
     color: #0c71c3;
     float: right;
+}
+
+
+@keyframes ani {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
