@@ -2,6 +2,7 @@
 
 session_start();
 date_default_timezone_set('Asia/Ho_Chi_Minh');
+$domainPage = "http://localhost/du_an_mau";
 
 require_once './core/Database.php';
 require_once './app/Models/BaseModel.php';

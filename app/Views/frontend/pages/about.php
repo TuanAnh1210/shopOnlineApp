@@ -5,7 +5,7 @@
         <div style="align-items: center;" class="row">
             <div class="col-12 col-md-6 col-lg-6">
                 <div class="about_intro-img">
-                    <img src="http://localhost/du_an_mau/public/imgs/about2.png" alt="">
+                    <img src="<?= $GLOBALS["domainPage"] ?>/public/imgs/about2.png" alt="">
                 </div>
             </div>
             <div class="col-12 col-md-6 col-lg-6">
@@ -50,8 +50,7 @@
             </div>
             <div class="col-12 col-md-6 col-lg-6">
                 <div class="about_goal-img">
-                    <img style="width: 100%;"
-                        src="http://localhost/braintech/public/imgs/7f60db33e9e416356783c428bec2ac5f.gif" alt="">
+                    <img style="width: 100%;" src="http://localhost/braintech/public/imgs/7f60db33e9e416356783c428bec2ac5f.gif" alt="">
                 </div>
 
             </div>

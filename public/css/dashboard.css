@@ -1,0 +1,513 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+:root {
+    --primary-color: #F26F21;
+    --height-header: 112px;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+
+body {
+    overflow-y: overlay;
+}
+
+
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 8px;
+}
+
+
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .15);
+}
+
+
+
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+
+main {
+    position: relative;
+    overflow: hidden;
+}
+
+.dashBoard_wrapper {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 32px;
+    padding: 0 20px;
+}
+
+.sideBar {
+    grid-column: span 2;
+    border-right: 1px solid #333;
+    padding-top: 20px;
+}
+
+.sideBar img {
+    display: flex;
+    width: 100%;
+    padding-right: 16px;
+    margin: 0 auto;
+}
+
+.dashBoard_content {
+    grid-column: span 10;
+    padding-bottom: 32px;
+}
+
+.dashBoard_acc {
+    display: inline-flex;
+    align-items: center;
+    justify-content: end;
+    margin-bottom: 48px;
+    margin-top: 20px;
+    position: relative;
+}
+
+.dashBoard_acc:hover .sub_user {
+    display: block;
+}
+
+.sub_user {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius: 4px;
+}
+
+.sub_user a {
+    display: block;
+    font-size: 1.6rem;
+    padding: 8px 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.sub_user a:hover {
+    background-color: orangered;
+    cursor: pointer;
+    transition: all linear .2s;
+}
+
+
+.dashBoard_banner {
+    height: 240px;
+    background: url('http://localhost/php1_ass_ph29220/public/imgs/dashboardBanner.png') center center / cover no-repeat;
+    border-radius: 16px;
+
+}
+
+.dashBoard_banner h2 {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 3.2rem;
+    font-weight: 700;
+}
+
+.dashBoard_list {
+    margin-top: 48px;
+}
+
+.dashBoard_item {
+    padding: 8px 0;
+    margin: 16px 0;
+    list-style: none;
+}
+
+.dashBoard_item.active {
+    color: red;
+}
+
+.dashBoard_item:hover.dashBoard_item a {
+    color: red;
+    transition: .2s all linear;
+}
+
+.dashBoard_item.active.dashBoard_item a {
+    color: red;
+}
+
+.dashBoard_item i {
+    font-size: 2.2rem;
+    margin-right: 10px;
+}
+
+.dashBoard_item a {
+    text-decoration: none;
+    font-size: 1.6rem;
+    color: #000;
+    transition: .2s all linear;
+
+}
+
+/* prd manage */
+
+.prdManage_header {
+    margin-top: 32px;
+    /* display: flex;
+    flex-direction: column; */
+}
+
+.prdManage_tit {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.prdManage_header h3 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.prdManage_form {
+    display: flex;
+    align-items: center;
+}
+
+.prdManage_form-search {
+    display: flex;
+    align-items: center;
+}
+
+.prdManage_form-search i {
+    font-size: 2.2rem;
+    color: #0066B2;
+    margin-right: 12px;
+}
+
+.prdManage_form-search input {
+    padding: 12px;
+    outline: none;
+    border: none;
+    font-size: 1.6rem;
+}
+
+.btn_addPrd {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #fff;
+    background-color: #38A169;
+    border: none;
+    padding: 12px 18px;
+}
+
+.btn_addPrd:hover {
+    opacity: .8;
+    transition: all linear .2s;
+    cursor: pointer;
+}
+
+.error {
+    color: red;
+    font-size: 1.4rem;
+    height: 17px;
+}
+
+/* table_prd */
+.table_prd {
+    margin-top: 32px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-spacing: 0 !important;
+    text-align: center;
+    min-height: 364px;
+}
+
+thead {
+    font-size: 1.4rem;
+    background-color: #4A4A4A;
+    color: #ffffff;
+}
+
+
+thead tr td {
+    padding: 8px 0;
+}
+
+tbody {
+    font-size: 1.6rem;
+}
+
+tbody tr td {
+    height: 82px;
+    padding: 8px 0;
+}
+
+
+td {
+    border: 1px solid #ccc;
+}
+
+.prdMana_image {
+    display: flex;
+    margin: auto;
+    height: 100%;
+}
+
+.btn-update {
+    background-color: #1E74A4;
+    color: #fff;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: none;
+    transition: all linear .2s;
+}
+
+.btn-delete {
+    background-color: #AC3131;
+    color: #fff;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: none;
+    transition: all linear .2s;
+}
+
+.btn-update:hover,
+.btn-delete:hover {
+    opacity: .8;
+    transition: all linear .2s;
+    cursor: pointer;
+}
+
+/* pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn-page {
+    padding: 6px 10px;
+    font-size: 1.4rem;
+    border: none;
+    background-color: #38A169;
+    color: #fff;
+    font-weight: 700;
+    margin: 0 4px;
+    border-radius: 4px;
+}
+
+.btn-page:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
+/* add new prd */
+.addNewPrd_form {
+    width: 840px;
+    margin: 0 auto;
+}
+
+.addNewPrd_form h2 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.addNewPrd_form label {
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 6px;
+}
+
+.addNewPrd_form select,
+.addNewPrd_form textarea,
+.addNewPrd_form input {
+    font-size: 1.6rem;
+    border-radius: 4px;
+    padding: 8px 16px;
+    outline: none;
+    border: 1px solid #333;
+}
+
+#productImage {
+    display: none;
+}
+
+#labelImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 160px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all linear .3s;
+    background-color: #0066B2;
+
+}
+
+#labelImage:hover {
+    background-color: #38A169;
+
+    transition: all linear .3s;
+    cursor: pointer;
+}
+
+#labelImage i {
+    font-size: 2.2rem;
+    color: #ffffff;
+    margin-right: 8px;
+}
+
+#labelImage p {
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.6rem;
+}
+
+.prdImage {
+    border: none !important;
+}
+
+.form_group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+.btn-add-newPrd {
+    font-size: 1.6rem;
+    padding: 10px 16px;
+    border-radius: 4px;
+    background-color: #38A169;
+    color: #fff;
+    border: none;
+    display: flex;
+    margin: 0 auto;
+}
+
+.btn-add-newPrd:hover {
+    opacity: .8;
+    transition: all linear .2s;
+    cursor: pointer;
+}
+
+/* message delete */
+.message__delete {
+    z-index: 10;
+    display: none;
+    width: 400px;
+    height: 120px;
+    position: fixed;
+    right: 26px;
+    top: 20%;
+    background-color: #111;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    padding: 8px;
+    border-left: 6px solid orangered;
+    color: #fff;
+    animation: runIn linear .2s;
+}
+
+.message__delete.open {
+    display: block;
+}
+
+.message__delete h2 {
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 1.8rem;
+}
+
+.message__delete h4 {
+    font-size: 1.4rem;
+
+    margin-left: 28px;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 32px;
+}
+
+.btn__delete-container {
+    margin-left: 18px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: end;
+}
+
+.no,
+.yes {
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #fff;
+    color: #111;
+    padding: 4px 20px;
+
+}
+
+.no:hover,
+.yes:hover {
+    color: orangered;
+    cursor: pointer;
+}
+
+.no {
+    margin: 0 12px;
+}
+
+@keyframes runIn {
+    from {
+        transform: translateX(110%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes ani {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* update cate */
+.iptUpdateCate {
+    font-size: 1.8rem;
+    padding: 8px;
+    margin: auto;
+    display: none;
+}
+
+.iptUpdateCate.open {
+    display: block;
+}
+
+.cateNameP {
+    display: block;
+}
+
+.cateNameP.close {
+    display: none;
+}

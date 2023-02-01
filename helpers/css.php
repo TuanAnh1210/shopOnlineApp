@@ -1,13 +1,20 @@
 <?php
-$css_file = 'http://localhost/du_an_mau/public/css/index.css';
-$css_responsive = 'http://localhost/du_an_mau/public/css/reponsive.css';
-$grid_css = 'http://localhost/du_an_mau/public/css/bootstrap-grid.css';
-$gridmap_css = 'http://localhost/du_an_mau/public/css/bootstrap-grid.css.map';
+$css_file = $domainPage . "/public/css/main.css";
+$dashboard_css = $domainPage . "/public/css/dashboard.css";
+$css_responsive = $domainPage . "/public/css/reponsive.css";
+$grid_css = $domainPage . "/public/css/bootstrap-grid.css";
+$gridmap_css = $domainPage . "/public/css/bootstrap-grid.css.map";
 
 function css_file()
 {
     return $GLOBALS['css_file'];
 }
+
+function dashboard_css()
+{
+    return $GLOBALS['dashboard_css'];
+}
+
 function grid_css()
 {
     return $GLOBALS['grid_css'];

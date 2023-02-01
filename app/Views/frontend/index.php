@@ -8,7 +8,7 @@ $test = date("Y-m-d H:i:s");
 
 <div class="content">
     <div class=" banner1">
-        <img class="banner--img" src="http://localhost/du_an_mau/public/imgs/about1.png" alt="">
+        <img class="banner--img" src="<?= $GLOBALS["domainPage"] ?>/public/imgs/about1.png" alt="">
 
         <div class="slider__scrool-textbox">
             <span class="textbox-town">Paris</span>
@@ -26,7 +26,7 @@ $test = date("Y-m-d H:i:s");
         </div>
     </div>
     <div class=" banner2">
-        <img class="banner--img" src="http://localhost/du_an_mau/public/imgs/about2.png" alt="">
+        <img class="banner--img" src="<?= $GLOBALS["domainPage"] ?>/public/imgs/about2.png" alt="">
         <div class="slider__scrool-textbox">
             <span class="textbox-town">Paris</span>
             <div class="textbox-town--wrapper">
@@ -43,7 +43,7 @@ $test = date("Y-m-d H:i:s");
         </div>
     </div>
     <div class=" banner3">
-        <img class="banner--img" src="http://localhost/du_an_mau/public/imgs/about3.png" alt="">
+        <img class="banner--img" src="<?= $GLOBALS["domainPage"] ?>/public/imgs/about3.png" alt="">
         <div class="slider__scrool-textbox">
             <span class="textbox-town">Paris</span>
             <div class="textbox-town--wrapper">
@@ -60,7 +60,7 @@ $test = date("Y-m-d H:i:s");
         </div>
     </div>
     <div class="banner4">
-        <img class="banner--img" src="http://localhost/du_an_mau/public/imgs/banner1.jpg" alt="">
+        <img class="banner--img" src="<?= $GLOBALS["domainPage"] ?>/public/imgs/banner1.jpg" alt="">
         <div class="slider__scrool-textbox">
             <span class="textbox-town">Paris</span>
             <div class="textbox-town--wrapper">
@@ -80,7 +80,7 @@ $test = date("Y-m-d H:i:s");
 
 
 <div class="subbanner">
-    <img style="width: 100%;" src="http://localhost/du_an_mau/public/imgs/subbanner.png" alt="">
+    <img style="width: 100%;" src="<?= $GLOBALS["domainPage"] ?>/public/imgs/subbanner.png" alt="">
 </div>
 
 <div class="container">
@@ -89,9 +89,9 @@ $test = date("Y-m-d H:i:s");
 
         <div class="owl-carousel owl-theme">
             <?php foreach ($data as $index => $item) : ?>
-            <a href="http://localhost/du_an_mau/product/detail?prd&id=<?= $item['id'] ?>">
+            <a href="<?= $GLOBALS['domainPage'] ?>/product/detail?prd&id=<?= $item['id'] ?>">
                 <div class="product__item">
-                    <div class="product__img"><img src="http://localhost/du_an_mau/uploads/<?= $item['image'] ?>"
+                    <div class="product__img"><img src="<?= $GLOBALS['domainPage'] ?>/uploads/<?= $item['image'] ?>"
                             alt="">
                     </div>
                     <h3 class="product__name"><?= $item['name'] ?></h3>
@@ -124,7 +124,7 @@ $test = date("Y-m-d H:i:s");
 </div>
 
 <div class="subbanner">
-    <img style="width: 100%;" src="http://localhost/du_an_mau/public/imgs/banner3.webp" alt="">
+    <img style="width: 100%;" src="<?= $GLOBALS["domainPage"] ?>/public/imgs/banner3.webp" alt="">
 </div>
 
 <div class="container">
@@ -133,9 +133,9 @@ $test = date("Y-m-d H:i:s");
 
         <div class="owl-carousel owl-theme">
             <?php foreach ($bestseller as $index => $item) :  ?>
-            <a href="http://localhost/du_an_mau/product/detail?prd&id=<?= $item['id'] ?>">
+            <a href="<?= $GLOBALS['domainPage'] ?>/product/detail?prd&id=<?= $item['id'] ?>">
                 <div class="product__item">
-                    <div class="product__img"><img src="http://localhost/du_an_mau/uploads/<?= $item['image'] ?>"
+                    <div class="product__img"><img src="<?= $GLOBALS['domainPage'] ?>/uploads/<?= $item['image'] ?>"
                             alt="">
                     </div>
                     <h3 class="product__name"><?= $item['name'] ?></h3>
@@ -173,28 +173,28 @@ $test = date("Y-m-d H:i:s");
         <div class="row">
             <div class="col-12 col-md-6 col-lg-3">
                 <div class="section__about">
-                    <img src="http://localhost/du_an_mau/public/imgs/ab1.png" alt="">
+                    <img src="<?= $GLOBALS["domainPage"] ?>/public/imgs/ab1.png" alt="">
                     <h4>GIAO HÀNG NHANH CHÓNG</h4>
                     <p>Freeship với đơn hàng có giá trị trên 200.000đ</p>
                 </div>
             </div>
             <div class="col-12 col-md-6 col-lg-3">
                 <div class="section__about">
-                    <img src="http://localhost/du_an_mau/public/imgs/ab4.png" alt="">
+                    <img src="<?= $GLOBALS["domainPage"] ?>/public/imgs/ab4.png" alt="">
                     <h4>HỖ TRỢ 24/7</h4>
                     <p>Đội ngũ bán hàng trực tuyến luôn sẵn sàng hỗ trợ bạn</p>
                 </div>
             </div>
             <div class="col-12 col-md-6 col-lg-3">
                 <div class="section__about">
-                    <img src="http://localhost/du_an_mau/public/imgs/ab2.png" alt="">
+                    <img src="<?= $GLOBALS["domainPage"] ?>/public/imgs/ab2.png" alt="">
                     <h4>VÔ VÀN QUÀ TẶNG</h4>
                     <p>Hàng trăm mã coupon giảm giá mỗi ngày</p>
                 </div>
             </div>
             <div class="col-12 col-md-6 col-lg-3">
                 <div class="section__about">
-                    <img src="http://localhost/du_an_mau/public/imgs/ab3.png" alt="">
+                    <img src="<?= $GLOBALS["domainPage"] ?>/public/imgs/ab3.png" alt="">
                     <h4>DỄ DÀNG ĐỔI TRẢ</h4>
                     <p>Freeship với đơn hàng có giá trị trên 200.000đ</p>
                 </div>
@@ -235,7 +235,7 @@ $test = date("Y-m-d H:i:s");
 </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="http://localhost/du_an_mau/public/lib/owl/owl.carousel.min.js"></script>
+<script src="<?= $GLOBALS["domainPage"] ?>/public/lib/owl/owl.carousel.min.js"></script>
 
 <script>
 $(document).ready(function() {

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="http://localhost/du_an_mau/public/css/account.css">
+    <link rel="stylesheet" href="<?= $GLOBALS["domainPage"] ?>/public/css/account.css">
 
 </head>
 
@@ -28,7 +28,7 @@
                 </div>
                 <button class="btn__login">Đăng nhập</button>
                 <a class="forgot__pass" href="#">Quên mật khẩu</a>
-                <a class="forgot__pass" href="http://localhost/du_an_mau">Trang chủ</a>
+                <a class="forgot__pass" href="<?= $GLOBALS["domainPage"] ?>">Trang chủ</a>
             </form>
             <form class="form__regis" action="">
                 <h2 class="form__title regis">Đăng ký</h2>
@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 <button class="btn__regis">Đăng ký</button>
-                <a class="forgot__pass" href="http://localhost/du_an_mau">Trang chủ</a>
+                <a class="forgot__pass" href="<?= $GLOBALS["domainPage"] ?>">Trang chủ</a>
             </form>
             <div class="overlay_container">
                 <div class="overlay-login">
@@ -85,102 +85,102 @@
 
 
     <script>
-    const regisJs = document.querySelector('.regisJs')
-    const loginJs = document.querySelector('.loginJs')
-    const isInfoRegis = document.querySelector('.isInfoRegis')
-    const isInfoLogin = document.querySelector('.isInfoLogin')
-    const overlay_container = document.querySelector('.overlay_container')
-    const form__login = document.querySelector('.form__login')
-    const form__regis = document.querySelector('.form__regis')
+        const regisJs = document.querySelector('.regisJs')
+        const loginJs = document.querySelector('.loginJs')
+        const isInfoRegis = document.querySelector('.isInfoRegis')
+        const isInfoLogin = document.querySelector('.isInfoLogin')
+        const overlay_container = document.querySelector('.overlay_container')
+        const form__login = document.querySelector('.form__login')
+        const form__regis = document.querySelector('.form__regis')
 
-    regisJs.onclick = () => {
-        isInfoRegis.classList.add('close')
-        isInfoLogin.classList.remove('close')
-        overlay_container.classList.add('isRegis')
-        form__login.classList.add('ani')
-        form__regis.classList.remove('ani')
-    }
-
-    loginJs.onclick = () => {
-        isInfoRegis.classList.remove('close')
-        isInfoLogin.classList.add('close')
-        overlay_container.classList.remove('isRegis')
-        form__regis.classList.add('ani')
-        form__login.classList.remove('ani')
-
-    }
-
-
-    // handle get data from db and convert arr php to arr js
-    const listUser = <?= json_encode($listUser) ?>
-
-    listUser.forEach(element => {
-        for (let i in element) {
-            if (!isNaN(Number(i))) {
-                delete element[i];
-            }
+        regisJs.onclick = () => {
+            isInfoRegis.classList.add('close')
+            isInfoLogin.classList.remove('close')
+            overlay_container.classList.add('isRegis')
+            form__login.classList.add('ani')
+            form__regis.classList.remove('ani')
         }
-    });
+
+        loginJs.onclick = () => {
+            isInfoRegis.classList.remove('close')
+            isInfoLogin.classList.add('close')
+            overlay_container.classList.remove('isRegis')
+            form__regis.classList.add('ani')
+            form__login.classList.remove('ani')
+
+        }
+
+
+        // handle get data from db and convert arr php to arr js
+        const listUser = <?= json_encode($listUser) ?>
+
+        listUser.forEach(element => {
+            for (let i in element) {
+                if (!isNaN(Number(i))) {
+                    delete element[i];
+                }
+            }
+        });
 
 
 
-    const formFieldLogin = ["emailLogin", "passLogin"]
-    const form_login = document.querySelector('.form__login')
+        const formFieldLogin = ["emailLogin", "passLogin"]
+        const form_login = document.querySelector('.form__login')
 
-    const checkExist = () => {
-        const emailLogin = document.querySelector("#emailLogin")
-        const passLogin = document.querySelector("#passLogin")
+        const checkExist = () => {
+            const emailLogin = document.querySelector("#emailLogin")
+            const passLogin = document.querySelector("#passLogin")
 
-        const isSuccess = listUser.some(user => user.email == emailLogin.value && user.password == passLogin.value)
+            const isSuccess = listUser.some(user => user.email == emailLogin.value && user.password == passLogin.value)
 
-        return isSuccess
-    }
+            return isSuccess
+        }
 
-    const showError = (ele, message) => {
-        ele.nextElementSibling.innerHTML = message
-        ele.style.border = "1px solid red"
-    }
+        const showError = (ele, message) => {
+            ele.nextElementSibling.innerHTML = message
+            ele.style.border = "1px solid red"
+        }
 
-    const hideError = (ele) => {
-        ele.nextElementSibling.innerHTML = ""
-        ele.style.border = ""
-    }
+        const hideError = (ele) => {
+            ele.nextElementSibling.innerHTML = ""
+            ele.style.border = ""
+        }
 
-    const regEmail = /^\w+@(\w+\.\w+){1,2}$/;
+        const regEmail = /^\w+@(\w+\.\w+){1,2}$/;
 
-    form_login.onsubmit = (e) => {
-        e.preventDefault()
-        let isError = true
-        formFieldLogin.forEach(field => {
-            const ele = document.getElementById(field)
+        form_login.onsubmit = (e) => {
+            e.preventDefault()
+            let isError = true
+            formFieldLogin.forEach(field => {
+                const ele = document.getElementById(field)
 
-            if (field == 'emailLogin') {
-                if (!regEmail.test(ele.value.trim())) {
-                    showError(ele, "Email không đúng định dạng")
+                if (field == 'emailLogin') {
+                    if (!regEmail.test(ele.value.trim())) {
+                        showError(ele, "Email không đúng định dạng")
+                        isError = false
+                    }
+                }
+
+                if (ele.value.trim() == "") {
+                    showError(ele, "Dữ liệu không được để trống")
                     isError = false
+                }
+
+                ele.oninput = () => {
+                    hideError(ele)
+                }
+            })
+
+            if (isError) {
+                if (checkExist()) {
+                    form_login.submit()
+
+                } else {
+                    alert('Email hoặc mật khẩu không chính xác !')
                 }
             }
 
-            if (ele.value.trim() == "") {
-                showError(ele, "Dữ liệu không được để trống")
-                isError = false
-            }
-
-            ele.oninput = () => {
-                hideError(ele)
-            }
-        })
-
-        if (isError) {
-            if (checkExist()) {
-                form_login.submit()
-
-            } else {
-                alert('Email hoặc mật khẩu không chính xác !')
-            }
         }
-
-    }
     </script>
 </body>
 
