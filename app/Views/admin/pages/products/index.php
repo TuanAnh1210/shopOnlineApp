@@ -1,4 +1,5 @@
-<?php ipView('admin.component.header') ?>
+<?php ipView('admin.component.header')
+?>
 
 <div class="dashBoard_content">
     <?php ipView('admin.component.acc') ?>
@@ -26,6 +27,8 @@
                 </div>
                 <a href="http://localhost/php1_ass_ph29220/admin/addNewPrd"><button class="btn_addPrd">Add New
                         Product</button></a>
+
+                <button class="deletesBtn">Delete</button>
             </div>
         </div>
 
@@ -34,17 +37,18 @@
         <table class="table_prd">
             <thead>
                 <tr>
-                    <td>STT</td>
-                    <td>Name</td>
-                    <td>Price</td>
-                    <td>Image</td>
-                    <td>Discount</td>
-                    <td>Description</td>
-                    <td>Quantity</td>
-                    <td>View</td>
-                    <td>Bought</td>
-                    <td>Category</td>
-                    <td>Action</td>
+                    <td width="4%">STT</td>
+                    <td width="15%">Name</td>
+                    <td width="8%">Price</td>
+                    <td width="10%">Image</td>
+                    <td width="7%">Discount</td>
+                    <td width="7%">Quantity</td>
+                    <td width="5%">View</td>
+                    <td width="7%">Bought</td>
+                    <td width="9%">Category</td>
+                    <td width="9%">Description</td>
+                    <td width="15%">Action</td>
+                    <td width="4%"></td>
                 </tr>
             </thead>
             <tbody>
@@ -63,7 +67,9 @@
 
 <script>
 // handle get data from db and convert arr php to arr js
-const data = <?= json_encode($listPrd) ?>
+const data = <?= json_encode($listPrd) ?>;
+const domainPage = <?= json_encode($GLOBALS['domainPage']) ?>;
+
 
 data.forEach(element => {
     for (let i in element) {
@@ -73,8 +79,10 @@ data.forEach(element => {
     }
 });
 
+
 // handle quantity btn pagination
 let numberData = 5
+
 
 const pagination = document.querySelector('.pagination')
 
@@ -96,17 +104,31 @@ function render(temp) {
     document.querySelector('tbody').innerHTML = newData.map((ele, index) => `
              <tr>
                     <td>${ele.id}</td>
-                    <td class="productNameItem">${ele.productName}</td>
+                    <td class="productNameItem">${ele.name}</td>
+                    <td>${(ele.price).toLocaleString() }</td>
                     <td>
-                        <img class="prdMana_image" src="${ele.productImage}"
+                        <img class="prdMana_image" src="${domainPage}/uploads/${ele.image}"
                             alt="">
                     </td>
-                    <td>${ele.productPrice}</td>
-                    <td>${ele.productDesc}</td>
+                    <td>${ele.discount}</td>
+                    <td >${ele.quantity}</td>
+                    <td >${ele.view}</td>
+                    <td >${ele.bought}</td>
+                    <td >${ele.cate}</td>
+                    <td class="descWrapper">
+                        <button onclick="showDesc(this)" class="showDesc">Show</button>
+                        <p class="descBox">${ele.desc}</p>
+                    </td>
+
                     <td style="text-align: center;">
                         <a href="http://localhost/php1_ass_ph29220/admin/updatePrd?id=${ele.id}"><button class="btn-update">Update</button></a>
                         <button onclick="confirmDelete(${ele.id})" class="btn-delete">Delete</button>
                     </td>
+                    <td >
+                    <input style="width:18px; height:18px;" type="checkbox">
+                        
+                    </td>
+
                 </tr>
 
     `).join('')
@@ -114,6 +136,8 @@ function render(temp) {
 
 document.body.onload = () => {
     render(temp)
+
+
 }
 
 const btns = document.querySelectorAll('.btn-page')
@@ -192,6 +216,11 @@ function confirmDelete(id) {
 
 no.onclick = () => {
     message__delete.classList.remove('open')
+}
+
+
+const showDesc = (item) => {
+    item.nextElementSibling.style.display = "block";
 }
 </script>
 

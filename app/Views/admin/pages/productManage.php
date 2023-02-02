@@ -1,4 +1,6 @@
-<?php ipView('admin.component.header') ?>
+<?php ipView('admin.component.header');
+
+?>
 
 <div class="dashBoard_content">
     <?php ipView('admin.component.acc') ?>
@@ -68,6 +70,8 @@ data.forEach(element => {
     }
 });
 
+console.log(data)
+
 // handle quantity btn pagination
 let numberData = 5
 
@@ -91,7 +95,7 @@ function render(temp) {
     document.querySelector('tbody').innerHTML = newData.map((ele, index) => `
              <tr>
                     <td>${ele.id}</td>
-                    <td class="productNameItem">${ele.productName}</td>
+                    <td class="productNameItem">${ele.Name}</td>
                     <td>
                         <img class="prdMana_image" src="${ele.productImage}"
                             alt="">

@@ -249,12 +249,12 @@ thead tr td {
 }
 
 tbody {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
 }
 
 tbody tr td {
     height: 82px;
-    padding: 8px 0;
+    padding: 4px 0;
 }
 
 
@@ -510,4 +510,58 @@ td {
 
 .cateNameP.close {
     display: none;
+}
+
+.descWrapper {
+    position: relative;
+}
+
+.descBox {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 460%;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 8px;
+    text-align: justify;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.deletesBtn {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #fff;
+    background-color: #FF3CAC;
+    background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+
+    margin-left: 12px;
+    border: none;
+    padding: 12px 8px;
+}
+
+.deletesBtn:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
+.showDesc {
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    color: #fff;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: none;
+    transition: all linear .2s;
+}
+
+.showDesc:hover {
+    opacity: .8;
+    cursor: pointer;
+}
+
+.descWrapper:hover .descBox {
+    display: block;
 }
