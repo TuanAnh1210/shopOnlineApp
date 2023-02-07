@@ -27,11 +27,11 @@
                 </li>
                 <li class="dashBoard_item">
                     <i class="fa-solid fa-chart-column"></i>
-                    <a class="" href="<?= $GLOBALS["domainPage"] ?>/admin/userManage">Quản lý user</a>
+                    <a class="" href="<?= $GLOBALS["domainPage"] ?>/category">Quản lý user</a>
                 </li>
                 <li class="dashBoard_item">
                     <i class="fa-solid fa-table-cells"></i>
-                    <a class="" href="<?= $GLOBALS["domainPage"] ?>/admin/cateManage">Quản lý danh mục</a>
+                    <a class="" href="<?= $GLOBALS["domainPage"] ?>/category">Quản lý danh mục</a>
                 </li>
                 <li class="dashBoard_item">
                     <i class="fa-solid fa-chart-column"></i>

@@ -1,6 +1,6 @@
 </div>
 
-<script src="<?= $GLOBALS["domainPage"] ?>/public/js/admins.js"></script>
+<script src="<?= $GLOBALS["domainPage"] ?>/public/js/admin.js"></script>
 
 
 </body>

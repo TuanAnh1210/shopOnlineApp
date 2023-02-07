@@ -10,7 +10,7 @@ if (arrPath[arrPath.length - 1] == "productManage") {
       item.classList.add("active");
     }
   });
-} else if (arrPath[arrPath.length - 1] == "cateManage") {
+} else if (arrPath[arrPath.length - 1] == "category") {
   dashBoard_item.forEach((item) => {
     if (item.querySelector("a").innerText == "Quản lý danh mục") {
       item.classList.add("active");

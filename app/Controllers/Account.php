@@ -20,9 +20,13 @@ class Account extends BaseController
             $_SESSION['auth'] = $auth;
 
             if ($_SESSION['auth']['role'] == 0) {
-                header('location: http://localhost/du_an_mau');
+                $url = $GLOBALS['domainPage'];
+
+
+                header("location:  $url");
             } else if ($_SESSION['auth']['role'] == 1 && $_SESSION['auth']['status'] == 1) {
-                header('location: http://localhost/du_an_mau/admin');
+                $url = $GLOBALS['domainPage'] . "/admin";
+                header("location: $url");
             }
         }
         return $this->view('frontend.pages.account', [
@@ -39,7 +43,10 @@ class Account extends BaseController
     {
         if (isset($_SESSION['auth'])) {
             unset($_SESSION['auth']);
-            header('location: http://localhost/du_an_mau/');
+            $url = $GLOBALS['domainPage'];
+
+
+            header("location:  $url");
         }
     }
 }
