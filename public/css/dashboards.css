@@ -193,6 +193,28 @@ main {
     align-items: center;
 }
 
+.action_user {
+    min-width: 140px;
+    padding: 4px 12px;
+    font-size: 16px;
+}
+
+.btn-action {
+    font-size: 14px;
+    font-weight: 400;
+    color: #fff;
+    background-color: #1E74A4;
+
+    border: none;
+    padding: 12px 18px;
+}
+
+.btn-action:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transition: all linear .2s;
+}
+
 .prdManage_form-search i {
     font-size: 2.2rem;
     color: #0066B2;

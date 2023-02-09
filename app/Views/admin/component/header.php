@@ -14,8 +14,7 @@
 <body>
     <div class="dashBoard_wrapper">
         <div class="sideBar">
-            <a href="<?= $GLOBALS["domainPage"] ?>/"><img src="<?= $GLOBALS["domainPage"] ?>/public/imgs/logo.png"
-                    alt="logo"></a>
+            <a href="<?= $GLOBALS["domainPage"] ?>/"><img src="<?= $GLOBALS["domainPage"] ?>/public/imgs/logo.png" alt="logo"></a>
             <ul class="dashBoard_list">
                 <li class="dashBoard_item">
                     <i class="fa-solid fa-table-cells"></i>
@@ -27,7 +26,7 @@
                 </li>
                 <li class="dashBoard_item">
                     <i class="fa-solid fa-chart-column"></i>
-                    <a class="" href="<?= $GLOBALS["domainPage"] ?>/category">Quản lý user</a>
+                    <a class="" href="<?= $GLOBALS["domainPage"] ?>/users">Quản lý user</a>
                 </li>
                 <li class="dashBoard_item">
                     <i class="fa-solid fa-table-cells"></i>
