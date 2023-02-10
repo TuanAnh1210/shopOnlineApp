@@ -49,9 +49,9 @@ class Users extends BaseController
 
 
             $this->accountModel->updateStatusUser($arrId);
-            $url = $GLOBALS['domainPage'] . "/users";
-            header("location: $url");
         }
+        $url = $GLOBALS['domainPage'] . "/users";
+        header("location: $url");
     }
 
     public function editUser()

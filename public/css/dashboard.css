@@ -235,6 +235,7 @@ main {
     background-color: #38A169;
     border: none;
     padding: 12px 18px;
+    margin-left: 12px;
 }
 
 .btn_addPrd:hover {

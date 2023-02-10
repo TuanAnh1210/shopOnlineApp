@@ -18,42 +18,51 @@
     </div>
 
     <div class="prdManage_header">
-        <div class="prdManage_tit">
-            <h3>Danh sách sản phẩm</h3>
-            <div class="prdManage_form">
-                <div class="prdManage_form-search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input id="search_ipt" type="text" placeholder="Search product">
+        <form class="form_products" action="" method="POST">
+            <div class="prdManage_tit">
+                <h3>Danh sách sản phẩm</h3>
+                <div class="prdManage_form">
+                    <div class="prdManage_form-search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input id="search_ipt" type="text" placeholder="Search product">
+                    </div>
+
+                    <div>
+                        <select class="action_user">
+                            <option value="delete">--Xóa--</option>
+                            <option value="edit">--Sửa--</option>
+                        </select>
+
+                        <button class="btn-action">Thực hiện</button>
+                    </div>
+                    <a href="http://localhost/php1_ass_ph29220/admin/addNewPrd"><button class="btn_addPrd">Add New
+                            Product</button></a>
+
                 </div>
-                <a href="http://localhost/php1_ass_ph29220/admin/addNewPrd"><button class="btn_addPrd">Add New
-                        Product</button></a>
-
-                <button class="deletesBtn">Delete</button>
             </div>
-        </div>
 
 
 
-        <table class="table_prd">
-            <thead>
-                <tr>
-                    <td width="4%">STT</td>
-                    <td width="15%">Name</td>
-                    <td width="8%">Price</td>
-                    <td width="10%">Image</td>
-                    <td width="7%">Discount</td>
-                    <td width="7%">Quantity</td>
-                    <td width="5%">View</td>
-                    <td width="7%">Bought</td>
-                    <td width="9%">Category</td>
-                    <td width="9%">Description</td>
-                    <td width="15%">Action</td>
-                    <td width="4%"></td>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+            <table class="table_prd">
+                <thead>
+                    <tr>
+                        <td width="3%">STT</td>
+                        <td width="30%">Name</td>
+                        <td width="10%">Price</td>
+                        <td width="10%">Image</td>
+                        <td width="7%">Discount</td>
+                        <td width="7%">Quantity</td>
+                        <td width="5%">View</td>
+                        <td width="7%">Bought</td>
+                        <td width="8%">Category</td>
+                        <td width="9%">Description</td>
+                        <td width="4%"></td>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </form>
 
         <div class="pagination">
         </div>
@@ -103,9 +112,9 @@ function render(temp) {
 
     document.querySelector('tbody').innerHTML = newData.map((ele, index) => `
              <tr>
-                    <td>${ele.id}</td>
+                    <td>${++index}</td>
                     <td class="productNameItem">${ele.name}</td>
-                    <td>${(ele.price).toLocaleString() }</td>
+                    <td>${(ele.price).toLocaleString() }đ</td>
                     <td>
                         <img class="prdMana_image" src="${domainPage}/uploads/${ele.image}"
                             alt="">
@@ -117,15 +126,12 @@ function render(temp) {
                     <td >${ele.cate}</td>
                     <td class="descWrapper">
                         <button onclick="showDesc(this)" class="showDesc">Show</button>
-                        <p class="descBox">${ele.desc}</p>
+                        <p class="descBox">${ele.description}</p>
                     </td>
 
-                    <td style="text-align: center;">
-                        <a href="http://localhost/php1_ass_ph29220/admin/updatePrd?id=${ele.id}"><button class="btn-update">Update</button></a>
-                        <button onclick="confirmDelete(${ele.id})" class="btn-delete">Delete</button>
-                    </td>
+                
                     <td >
-                    <input style="width:18px; height:18px;" type="checkbox">
+                    <input name="${ele.id}" value="${ele.id}" style="width:18px; height:18px;" type="checkbox">
                         
                     </td>
 
@@ -154,10 +160,14 @@ for (let i = 0; i < btns.length; i++) {
 const search_ipt = document.querySelector('#search_ipt')
 
 search_ipt.onkeyup = () => {
-    const valueIpt = search_ipt.value.toLowerCase()
+    const valueIpt = search_ipt.value.toLowerCase().normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/đ/g, 'd').replace(/Đ/g, 'D')
     const arr = []
     data.forEach(item => {
-        const text = item.productName.toLowerCase()
+        const text = item.productName.toLowerCase().normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/đ/g, 'd').replace(/Đ/g, 'D')
 
         if (text.indexOf(valueIpt) > -1) {
             arr.push(item)
@@ -178,19 +188,30 @@ function renderSearch(dataSearch) {
         render(temp)
     } else {
         document.querySelector('tbody').innerHTML = dataSearch.map((ele, index) => `
-             <tr>
-                    <td>${ele.id}</td>
-                    <td class="productNameItem">${ele.productName}</td>
+        <tr>
+                    <td>${++index}</td>
+                    <td class="productNameItem">${ele.name}</td>
+                    <td>${(ele.price).toLocaleString() }đ</td>
                     <td>
-                        <img class="prdMana_image" src="${ele.productImage}"
+                        <img class="prdMana_image" src="${domainPage}/uploads/${ele.image}"
                             alt="">
                     </td>
-                    <td>${ele.productPrice}</td>
-                    <td>${ele.productDesc}</td>
-                    <td style="text-align: center;">
-                        <a href="http://localhost/php1_ass_ph29220/admin/updatePrd?id=${ele.id}"><button class="btn-update">Update</button></a>
-                        <button onclick="confirmDelete(${ele.id})" class="btn-delete">Delete</button>
+                    <td>${ele.discount}</td>
+                    <td >${ele.quantity}</td>
+                    <td >${ele.view}</td>
+                    <td >${ele.bought}</td>
+                    <td >${ele.cate}</td>
+                    <td class="descWrapper">
+                        <button onclick="showDesc(this)" class="showDesc">Show</button>
+                        <p class="descBox">${ele.description}</p>
                     </td>
+
+                
+                    <td >
+                    <input name="${ele.id}" value="${ele.id}" style="width:18px; height:18px;" type="checkbox">
+                        
+                    </td>
+
                 </tr>
 
     `).join('')
@@ -221,6 +242,52 @@ no.onclick = () => {
 
 const showDesc = (item) => {
     item.nextElementSibling.style.display = "block";
+}
+
+
+// feat: handle when select action crud account
+
+const btn_action = document.querySelector(".btn-action");
+
+console.log(btn_action)
+const form_products = document.querySelector(".form_products")
+const action_user = document.querySelector(".action_user")
+
+
+btn_action.onclick = (e) => {
+    e.preventDefault()
+    const message__delete = document.querySelector('.message__delete')
+    const yes = document.querySelector('.yes')
+    const no = document.querySelector('.no')
+
+
+    no.onclick = () => {
+        message__delete.classList.remove('open')
+
+    }
+
+
+    switch (action_user.value) {
+        case "delete":
+            form_products.action = `${domainPage}/admin/deleteProduct`
+            message__delete.classList.add('open')
+
+            yes.onclick = () => {
+                form_products.submit()
+            }
+            break;
+
+
+
+        case "edit":
+            form_products.action = `${domainPage}/admin/editProduct`
+            form_products.submit()
+
+            break;
+
+
+    }
+
 }
 </script>
 

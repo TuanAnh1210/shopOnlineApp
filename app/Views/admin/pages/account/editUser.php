@@ -5,7 +5,7 @@
 
     <div class="message__delete">
         <h2>Sửa thành công !!</h2>
-        <h4>Xem trang danh mục sản phẩm ngay</h4>
+        <h4>Xem trang quản lí users ngay</h4>
         <div class="btn__delete-container">
             <button class="yes">Yes</button>
         </div>

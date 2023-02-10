@@ -20,7 +20,7 @@ class ProductModel extends BaseModel
 
     public function getPrd()
     {
-        $sql = "SELECT products.id, products.name,price, image, discount, products.desc ,quantity,view,bought,category.name as cate FROM products LEFT JOIN category on products.category_id = category.id ORDER BY products.id DESC";
+        $sql = "SELECT products.id, products.name,price, image, discount, products.description ,quantity,view,bought,category.name as cate FROM products LEFT JOIN category on products.category_id = category.id ORDER BY products.id DESC";
         return $this->query_all($sql);
     }
 
@@ -36,8 +36,13 @@ class ProductModel extends BaseModel
         return $this->execute($sql);
     }
 
-    public function deletePrd($id)
+    public function deletePrd($ids)
     {
-        return $this->delete(self::TABLE, $id);
+        return $this->delete(self::TABLE, $ids);
+    }
+
+    public function updateInfoProduct($data, $id)
+    {
+        return $this->update(self::TABLE, $data, $id);
     }
 }
