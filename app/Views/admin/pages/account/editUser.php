@@ -11,11 +11,13 @@
         </div>
     </div>
 
-    <form class="addNewPrd_form" action="" enctype="multipart/form-data" method="POST">
+    <form class="addNewPrd_form" action="<?= $GLOBALS['domainPage'] ?>/users/handleEditUser"
+        enctype="multipart/form-data" method="POST">
         <h2>Cập nhật thông tin</h2>
         <div class="form_group">
             <label for="">Họ và tên</label>
-            <input type="text" placeholder="Nhập họ tên" name="fullname" id="fullname" value="<?= $curUser['fullname'] ?>">
+            <input type="text" placeholder="Nhập họ tên" name="fullname" id="fullname"
+                value="<?= $curUser['fullname'] ?>">
             <p class="error"></p>
         </div>
         <div class="form_group">
@@ -31,26 +33,48 @@
             </label>
             <span style="font-size: 16px;" id="previewText"></span>
 
-            <input class="prdImage" type="file" name="avatar" id="avatar" value="<?= $curUser['avatar'] ?>">
-            <img style="height: 200px; object-fit: contain;" src="<?= $GLOBALS["domainPage"] ?>/uploads/<?= $curUser['avatar'] ?>" alt="">
+            <input hidden class="prdImage" type="file" name="avatar" id="avatar">
+            <img style="height: 200px; object-fit: contain;"
+                src="<?= $GLOBALS["domainPage"] ?>/uploads/<?= $curUser['avatar'] ?>" alt="">
             <p class="error"></p>
         </div>
         <div class="form_group">
             <label for="">Địa chỉ</label>
-            <input type="text" placeholder="Nhập địa chỉ" name="address" id="address" value="<?= $curUser['address'] ?>">
+            <input type="text" placeholder="Nhập địa chỉ" name="address" id="address"
+                value="<?= $curUser['address'] ?>">
             <p class="error"></p>
         </div>
         <div class="form_group">
             <label for="">Mật khẩu</label>
-            <input type="text" placeholder="Nhập password" name="password" id="password" value="<?= $curUser['password'] ?>">
+            <input type="text" placeholder="Nhập password" name="password" id="password"
+                value="<?= $curUser['password'] ?>">
             <p class="error"></p>
         </div>
         <div class="form_group">
             <label for="">Số điện thoại</label>
-            <input type="text" placeholder="Nhập Số điện thoại" name="phone" id="phone" value="<?= $curUser['phone'] ?>">
+            <input type="text" placeholder="Nhập Số điện thoại" name="phone" id="phone"
+                value="<?= $curUser['phone'] ?>">
             <p class="error"></p>
         </div>
-        <input type="text" value="">
+
+        <div class="form_group">
+            <label for="">Phân quyền</label>
+
+            <select name="role" id="">
+                <option value="1" <?php if ($curUser['role'] == 1) {
+                                        echo "selected";
+                                    } ?>>Quản trị
+                </option>
+                <option value="0" <?php if ($curUser['role'] == 0) {
+                                        echo "selected";
+                                    } ?>>Khách hàng
+                </option>
+            </select>
+
+            <p class="error"></p>
+        </div>
+        <input hidden type="text" value="<?= $curUser['avatar'] ?>" name="oldAvatar">
+        <input hidden type="text" value="<?= $id ?>" name="curIdUser">
 
 
 
@@ -60,19 +84,19 @@
 </div>
 
 <script>
-    const prdImage = document.querySelector('.prdImage')
-    prdImage.onchange = () => {
-        document.getElementById('previewText').innerText = prdImage.value
-    }
+const prdImage = document.querySelector('.prdImage')
+prdImage.onchange = () => {
+    document.getElementById('previewText').innerText = prdImage.value
+}
 
-    const addNewPrd_form = document.querySelector('.addNewPrd_form')
+const addNewPrd_form = document.querySelector('.addNewPrd_form')
 
-    addNewPrd_form.onsubmit = (e) => {
-        e.preventDefault()
-        document.querySelector('.message__delete').classList.add('open')
-        document.querySelector('.yes').onclick = () => {
-            addNewPrd_form.submit()
-        }
+addNewPrd_form.onsubmit = (e) => {
+    e.preventDefault()
+    document.querySelector('.message__delete').classList.add('open')
+    document.querySelector('.yes').onclick = () => {
+        addNewPrd_form.submit()
     }
+}
 </script>
 <?php ipView('admin.component.footer') ?>

@@ -66,7 +66,44 @@ class Users extends BaseController
             $curUser = $this->accountModel->getOne($id);
         }
         return $this->view("admin.pages.account.editUser", [
-            "curUser" => $curUser
+            "curUser" => $curUser,
+            'id' => $id
         ]);
+    }
+
+    public function handleEditUser()
+    {
+        if (!empty($_POST)) {
+            if (!empty($_FILES['avatar']['name'])) {
+                $target_dir = "uploads/";
+                $target_file = $target_dir . basename($_FILES['avatar']['name']);
+                move_uploaded_file($_FILES["avatar"]["tmp_name"], $target_file);
+                $newAvatar = basename($_FILES['avatar']['name']);
+            } else {
+                $newAvatar = $_POST['oldAvatar'];
+            }
+            $id = $_POST['curIdUser'];
+            $fullname = $_POST['fullname'];
+            $email = $_POST['email'];
+            $avatar = $newAvatar;
+            $address = $_POST['address'];
+            $password = $_POST['password'];
+            $phone = $_POST['phone'];
+            $role = $_POST['role'];
+
+            $data = [
+                "fullname" =>  $fullname,
+                "email" =>  $email,
+                "avatar" =>  $avatar,
+                "address" =>  $address,
+                "password" =>  $password,
+                "phone" =>  $phone,
+                "role" =>  $role,
+            ];
+            $this->accountModel->updateUserInfo($data, $id);
+
+            $url = $GLOBALS['domainPage'] . "/users";
+            header("location: $url");
+        }
     }
 }

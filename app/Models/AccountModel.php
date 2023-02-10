@@ -41,4 +41,9 @@ class AccountModel extends BaseModel
         $sql = "UPDATE users SET status = 1 WHERE $testStr";
         return $this->execute($sql);
     }
+
+    public function updateUserInfo($data, $id)
+    {
+        return $this->update(self::TABLE, $data, $id);
+    }
 }

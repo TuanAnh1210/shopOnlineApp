@@ -16,7 +16,7 @@ if (arrPath[arrPath.length - 1] == "productManage") {
       item.classList.add("active");
     }
   });
-} else if (arrPath[arrPath.length - 1] == "userManage") {
+} else if (arrPath[arrPath.length - 1] == "users") {
   dashBoard_item.forEach((item) => {
     if (item.querySelector("a").innerText == "Quản lý user") {
       item.classList.add("active");

@@ -115,7 +115,7 @@ function render(temp) {
                     <td>${ele.password}</td>
                     <td>${ele.phone}</td>
                     <td>
-                        ${ele.role == 0 ? 'user' : 'admin'}
+                        ${ele.role == 0 ? 'Khách hàng' : 'Quản trị'}
                     </td>
                     <td>
                         ${ele.status == 0 ? 'chờ duyệt' : 'đã duyệt'}
@@ -136,11 +136,14 @@ function render(temp) {
 const search_ipt = document.querySelector('#search_ipt')
 
 search_ipt.onkeyup = () => {
-    console.log(search_ipt.value.toLowerCase())
-    const valueIpt = search_ipt.value.toLowerCase()
+    const valueIpt = search_ipt.value.toLowerCase().normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/đ/g, 'd').replace(/Đ/g, 'D')
     const arr = []
     listAcc.forEach(item => {
-        const text = item.fullname.toLowerCase()
+        const text = item.fullname.toLowerCase().normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/đ/g, 'd').replace(/Đ/g, 'D')
 
         if (text.indexOf(valueIpt) > -1) {
             arr.push(item)
@@ -174,14 +177,14 @@ function renderSearch(dataSearch) {
                     <td>${ele.password}</td>
                     <td>${ele.phone}</td>
                     <td>
-                        ${ele.role == 0 ? 'user' : 'admin'}
+                        ${ele.role == 0 ? 'Khách hàng' : 'Quản trị'}
                     </td>
                     <td>
                         ${ele.status == 0 ? 'chờ duyệt' : 'đã duyệt'}
                         
                     </td>
                     <td style="text-align: center;">
-                    ${ele.status == 0 ? `<button value="${ele.id}" onclick="confirmCensor(${ele.id})" class="btn-update btn-censor">Duyệt</button>` : ''}
+                    <input class="checkStatusUser" name="${ele.id}" value="${ele.id}" style="width:18px; height:18px;" type="checkbox">
                         
                     </td>
                    
