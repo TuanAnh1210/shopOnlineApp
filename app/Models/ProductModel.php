@@ -45,4 +45,9 @@ class ProductModel extends BaseModel
     {
         return $this->update(self::TABLE, $data, $id);
     }
+
+    public function addNewProduct($data)
+    {
+        return $this->create(self::TABLE, $data);
+    }
 }

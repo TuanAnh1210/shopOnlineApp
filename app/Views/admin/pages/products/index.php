@@ -35,8 +35,9 @@
 
                         <button class="btn-action">Thực hiện</button>
                     </div>
-                    <a href="http://localhost/php1_ass_ph29220/admin/addNewPrd"><button class="btn_addPrd">Add New
-                            Product</button></a>
+                    <a style="text-decoration: none;" class="btn_addPrd"
+                        href="<?= $GLOBALS['domainPage'] ?>/admin/addNewPrd">Add New
+                        Product</a>
 
                 </div>
             </div>
