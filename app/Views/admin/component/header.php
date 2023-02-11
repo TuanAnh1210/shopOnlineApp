@@ -14,23 +14,28 @@
 <body>
     <div class="dashBoard_wrapper">
         <div class="sideBar">
-            <a href="<?= $GLOBALS["domainPage"] ?>/"><img src="<?= $GLOBALS["domainPage"] ?>/public/imgs/logo.png" alt="logo"></a>
+            <a href="<?= $GLOBALS["domainPage"] ?>/"><img src="<?= $GLOBALS["domainPage"] ?>/public/imgs/logo.png"
+                    alt="logo"></a>
             <ul class="dashBoard_list">
                 <li class="dashBoard_item">
                     <i class="fa-solid fa-table-cells"></i>
                     <a class="" href="<?= $GLOBALS["domainPage"] ?>/admin/">Dashboard</a>
                 </li>
                 <li class="dashBoard_item">
-                    <i class="fa-solid fa-qrcode"></i>
+                    <i class="fa-solid fa-basket-shopping"></i>
                     <a class="" href="<?= $GLOBALS["domainPage"] ?>/admin/productManage">Quản lý sản phẩm</a>
                 </li>
                 <li class="dashBoard_item">
-                    <i class="fa-solid fa-chart-column"></i>
-                    <a class="" href="<?= $GLOBALS["domainPage"] ?>/users">Quản lý user</a>
+                    <i class="fa-solid fa-universal-access"></i>
+                    <a class="" href="<?= $GLOBALS["domainPage"] ?>/users">Quản lý tài khoản</a>
                 </li>
                 <li class="dashBoard_item">
-                    <i class="fa-solid fa-table-cells"></i>
+                    <i class="fa-solid fa-calendar-days"></i>
                     <a class="" href="<?= $GLOBALS["domainPage"] ?>/category">Quản lý danh mục</a>
+                </li>
+                <li class="dashBoard_item">
+                    <i class="fa-solid fa-comments"></i>
+                    <a class="" href="<?= $GLOBALS["domainPage"] ?>/category">Quản lý bình luận</a>
                 </li>
                 <li class="dashBoard_item">
                     <i class="fa-solid fa-chart-column"></i>

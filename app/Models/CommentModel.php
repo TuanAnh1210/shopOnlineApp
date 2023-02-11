@@ -28,4 +28,11 @@ class CommentModel extends BaseModel
         ];
         return $this->update(self::TABLE, $data, $id_cmt);
     }
+
+    public function getComment()
+    {
+        $sql = "SELECT products.id as idCmt, name, image, COUNT(product_id) as totalComment FROM comments JOIN products ON comments.product_id = products.id GROUP BY product_id";
+
+        return $this->query_all($sql);
+    }
 }
