@@ -57,40 +57,40 @@
 
 
 <script>
-    // handle get data from db and convert arr php to arr js
-    const data = <?= json_encode($listCate) ?>;
-    const domainPage = <?= json_encode($GLOBALS['domainPage']) ?>;
+// handle get data from db and convert arr php to arr js
+const data = <?= json_encode($listCate) ?>;
+const domainPage = <?= json_encode($GLOBALS['domainPage']) ?>;
 
-    data.forEach(element => {
-        for (let i in element) {
-            if (!isNaN(Number(i))) {
-                delete element[i];
-            }
+data.forEach(element => {
+    for (let i in element) {
+        if (!isNaN(Number(i))) {
+            delete element[i];
         }
-    });
+    }
+});
 
-    // handle quantity btn pagination
-    let numberData = 4
+// handle quantity btn pagination
+let numberData = 4
 
-    const pagination = document.querySelector('.pagination')
+const pagination = document.querySelector('.pagination')
 
-    for (let i = 0; i < Math.ceil(data.length / numberData); i++) {
-        pagination.innerHTML += `
+for (let i = 0; i < Math.ceil(data.length / numberData); i++) {
+    pagination.innerHTML += `
         <button class="btn-page">${i + 1}</button>
     `
-    }
+}
 
-    // handle pagination 
+// handle pagination 
 
-    let temp = 0
+let temp = 0
 
-    function render(temp) {
-        let target = temp > 0 ? temp * numberData : numberData
+function render(temp) {
+    let target = temp > 0 ? temp * numberData : numberData
 
-        const newData = data.slice(target - numberData, target)
+    const newData = data.slice(target - numberData, target)
 
-        document.querySelector('tbody').innerHTML = newData.map((ele, index) => `
-             <form action="" method="POST">
+    document.querySelector('tbody').innerHTML = newData.map((ele, index) => `
+            
                  <tr>
                         <td>${ele.id}</td>
                         <td class="productNameItem">
@@ -104,72 +104,72 @@
                             <button onclick="confirmDelete(${ele.id})" class="btn-delete">Delete</button>
                         </td>
                     </tr>
-             </form>
+     
 
     `).join('')
+}
+
+
+
+
+render(temp)
+const btnUpdateCate = document.querySelectorAll('.btn-update')
+
+
+
+const btns = document.querySelectorAll('.btn-page')
+
+for (let i = 0; i < btns.length; i++) {
+    btns[i].onclick = () => {
+
+        render(btns[i].innerText)
     }
+}
 
+// handle delete
+const btn_delete = document.querySelector('.btn-delete')
+const message__delete = document.querySelector('.message__delete')
+const yes_btn = document.querySelector('.yes')
+const no = document.querySelector('.no')
+const delete_links = document.querySelectorAll('.delete_links')
 
-
-
-    render(temp)
-    const btnUpdateCate = document.querySelectorAll('.btn-update')
-
-
-
-    const btns = document.querySelectorAll('.btn-page')
-
-    for (let i = 0; i < btns.length; i++) {
-        btns[i].onclick = () => {
-
-            render(btns[i].innerText)
-        }
+function confirmDelete(id) {
+    message__delete.classList.add('open')
+    yes_btn.onclick = () => {
+        window.location = `${domainPage}/category/deleteCate?id=${id}`
     }
+}
 
-    // handle delete
-    const btn_delete = document.querySelector('.btn-delete')
-    const message__delete = document.querySelector('.message__delete')
-    const yes_btn = document.querySelector('.yes')
-    const no = document.querySelector('.no')
-    const delete_links = document.querySelectorAll('.delete_links')
+no.onclick = () => {
+    message__delete.classList.remove('open')
+}
 
-    function confirmDelete(id) {
-        message__delete.classList.add('open')
-        yes_btn.onclick = () => {
-            window.location = `${domainPage}/category/deleteCate?id=${id}`
-        }
+
+// const cateNameP = document.querySelectorAll('.cateNameP')
+// const iptUpdateCate = document.querySelectorAll('.iptUpdateCate')
+
+function handleUpdateCate(id, item) {
+    const cateRow = item.parentElement.parentElement.querySelector('.productNameItem');
+    cateNameP = cateRow.querySelector('.cateNameP')
+    iptUpdateCate = cateRow.querySelector('.iptUpdateCate')
+    if (cateNameP.classList == 'cateNameP' && iptUpdateCate.classList == 'iptUpdateCate') {
+        cateNameP.classList.add('close')
+        iptUpdateCate.classList.add('open')
+        iptUpdateCate.focus()
+    } else if (cateNameP.classList == 'cateNameP close' && iptUpdateCate.classList == 'iptUpdateCate open') {
+        window.location =
+            `${domainPage}/category/updateCate?id=${id}&value=${iptUpdateCate.value}`
     }
-
-    no.onclick = () => {
-        message__delete.classList.remove('open')
-    }
+}
 
 
-    // const cateNameP = document.querySelectorAll('.cateNameP')
-    // const iptUpdateCate = document.querySelectorAll('.iptUpdateCate')
-
-    function handleUpdateCate(id, item) {
-        const cateRow = item.parentElement.parentElement.querySelector('.productNameItem');
-        cateNameP = cateRow.querySelector('.cateNameP')
-        iptUpdateCate = cateRow.querySelector('.iptUpdateCate')
-        if (cateNameP.classList == 'cateNameP' && iptUpdateCate.classList == 'iptUpdateCate') {
-            cateNameP.classList.add('close')
-            iptUpdateCate.classList.add('open')
-            iptUpdateCate.focus()
-        } else if (cateNameP.classList == 'cateNameP close' && iptUpdateCate.classList == 'iptUpdateCate open') {
-            window.location =
-                `${domainPage}/category/updateCate?id=${id}&value=${iptUpdateCate.value}`
-        }
-    }
-
-
-    // btnUpdateCate.onclick = (e) => {
-    //     e.preventDefault()
-    //     if (iptUpdateCate.style.display == 'none' && cateNameP.style.display == 'block') {
-    //         iptUpdateCate.style.display == 'block';
-    //         cateNameP.style.display == 'none';
-    //     }
-    // }
+// btnUpdateCate.onclick = (e) => {
+//     e.preventDefault()
+//     if (iptUpdateCate.style.display == 'none' && cateNameP.style.display == 'block') {
+//         iptUpdateCate.style.display == 'block';
+//         cateNameP.style.display == 'none';
+//     }
+// }
 </script>
 
 

@@ -35,4 +35,16 @@ class CommentModel extends BaseModel
 
         return $this->query_all($sql);
     }
+
+    public function getDetailCmt($id)
+    {
+        $sql  = "SELECT comments.id as idCmt, content, comment_time, users.fullname as nameuser, users.avatar as imageuser, product_id FROM comments JOIN users on comments.user_id = users.id WHERE product_id = $id";
+
+        return $this->query_all($sql);
+    }
+
+    public function updateDetailComment($data, $id)
+    {
+        return $this->update(self::TABLE, $data, $id);
+    }
 }

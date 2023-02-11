@@ -21,6 +21,45 @@ class Admin_comment extends BaseController
 
     public function detailComment()
     {
-        return $this->view("admin.pages.comment.detail");
+        if (!empty($_GET['id']) && $_GET['id'] > 0) {
+            $id = $_GET['id'];
+
+            $listCmt = $this->commentModel->getDetailCmt($id);
+        }
+
+        return $this->view("admin.pages.comment.detail", [
+            'listCmt' => $listCmt,
+
+        ]);
+    }
+
+    public function handleUpdateComment()
+    {
+        if (!empty($_GET["id"]) && !empty($_GET['value']) && !empty($_GET['product_id'])) {
+            $id = $_GET['id'];
+            $product_id = $_GET['product_id'];
+            $content = $_GET['value'];
+
+            $data = [
+                'content' => $content
+            ];
+
+            $this->commentModel->updateDetailComment($data, $id);
+
+            $url = $GLOBALS['domainPage'] . "/admin_comment/detailComment?id=$product_id";
+            header("location: $url");
+        }
+    }
+
+    public function deleteDetailCmt()
+    {
+        if (!empty($_GET['id']) && !empty($_GET['product_id'])) {
+            $id = $_GET['id'];
+            $product_id = $_GET['product_id'];
+
+            $this->commentModel->deleteCmt($id);
+            $url = $GLOBALS['domainPage'] . "/admin_comment/detailComment?id=$product_id";
+            header("location: $url");
+        }
     }
 }

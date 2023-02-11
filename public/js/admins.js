@@ -18,7 +18,13 @@ if (arrPath[arrPath.length - 1] == "productManage") {
   });
 } else if (arrPath[arrPath.length - 1] == "users") {
   dashBoard_item.forEach((item) => {
-    if (item.querySelector("a").innerText == "Quản lý user") {
+    if (item.querySelector("a").innerText == "Quản lý tài khoản") {
+      item.classList.add("active");
+    }
+  });
+} else if (arrPath[arrPath.length - 1] == "admin_comment") {
+  dashBoard_item.forEach((item) => {
+    if (item.querySelector("a").innerText == "Quản lý bình luận") {
       item.classList.add("active");
     }
   });
