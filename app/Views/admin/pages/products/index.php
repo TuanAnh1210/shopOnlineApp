@@ -129,15 +129,12 @@ function render(temp) {
                         <button onclick="showDesc(this)" class="showDesc">Show</button>
                         <p class="descBox">${ele.description}</p>
                     </td>
-
                 
                     <td >
                     <input name="${ele.id}" value="${ele.id}" style="width:18px; height:18px;" type="checkbox">
                         
                     </td>
-
                 </tr>
-
     `).join('')
 }
 
@@ -166,7 +163,7 @@ search_ipt.onkeyup = () => {
         .replace(/đ/g, 'd').replace(/Đ/g, 'D')
     const arr = []
     data.forEach(item => {
-        const text = item.productName.toLowerCase().normalize('NFD')
+        const text = item.name.toLowerCase().normalize('NFD')
             .replace(/[\u0300-\u036f]/g, '')
             .replace(/đ/g, 'd').replace(/Đ/g, 'D')
 
@@ -206,15 +203,12 @@ function renderSearch(dataSearch) {
                         <button onclick="showDesc(this)" class="showDesc">Show</button>
                         <p class="descBox">${ele.description}</p>
                     </td>
-
                 
                     <td >
                     <input name="${ele.id}" value="${ele.id}" style="width:18px; height:18px;" type="checkbox">
                         
                     </td>
-
                 </tr>
-
     `).join('')
     }
 

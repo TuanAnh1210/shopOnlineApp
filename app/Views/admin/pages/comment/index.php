@@ -26,8 +26,7 @@
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <input type="text" placeholder="Search category">
                 </div>
-                <a href="<?= $GLOBALS["domainPage"] ?>/category/addNewCate"><button class="btn_addPrd">Add New
-                        Category</button></a>
+
             </div>
         </div>
 
@@ -153,9 +152,7 @@ no.onclick = () => {
 }
 
 
-// const cateNameP = document.querySelectorAll('.cateNameP')
-// const iptUpdateCate = document.querySelectorAll('.iptUpdateCate')
-
+// handle update
 function handleUpdateCate(id, item) {
     const cateRow = item.parentElement.parentElement.querySelector('.productNameItem');
     cateNameP = cateRow.querySelector('.cateNameP')
@@ -169,15 +166,6 @@ function handleUpdateCate(id, item) {
             `${domainPage}/category/updateCate?id=${id}&value=${iptUpdateCate.value}`
     }
 }
-
-
-// btnUpdateCate.onclick = (e) => {
-//     e.preventDefault()
-//     if (iptUpdateCate.style.display == 'none' && cateNameP.style.display == 'block') {
-//         iptUpdateCate.style.display == 'block';
-//         cateNameP.style.display == 'none';
-//     }
-// }
 </script>
 
 
