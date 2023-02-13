@@ -46,4 +46,9 @@ class AccountModel extends BaseModel
     {
         return $this->update(self::TABLE, $data, $id);
     }
+
+    public function addNewAcc($data)
+    {
+        return $this->create(self::TABLE, $data);
+    }
 }

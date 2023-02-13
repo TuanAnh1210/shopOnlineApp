@@ -27,6 +27,99 @@ html {
     /* position: relative; */
 }
 
+
+.message__succ,
+.message__delete {
+    z-index: 10;
+    display: none;
+    width: 400px;
+    height: 120px;
+    position: fixed;
+    right: 26px;
+    top: 20%;
+    background-color: #111;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    padding: 8px;
+    border-left: 6px solid orangered;
+    color: #fff;
+    animation: runIn linear .2s;
+}
+
+.message__succ.open,
+.message__delete.open {
+    display: block;
+}
+
+.message__succ h2,
+.message__delete h2 {
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.message__succ h4,
+.message__delete h4 {
+    font-size: 14px;
+
+    margin-left: 28px;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 32px;
+}
+
+.btn__delete-container {
+    margin-left: 18px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: end;
+}
+
+.yes_succ,
+.no,
+.yes {
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #fff;
+    color: #111;
+    padding: 4px 20px;
+
+}
+
+.yes_succ:hover,
+.no:hover,
+.yes:hover {
+    color: orangered;
+    cursor: pointer;
+}
+
+.no {
+    margin: 0 12px;
+}
+
+@keyframes runIn {
+    from {
+        transform: translateX(110%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes ani {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
 .account__wrapper {
     height: 100vh;
     background: url('http://localhost/du_an_mau/public/imgs/acc.jpg') center center / cover no-repeat;
