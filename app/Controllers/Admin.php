@@ -15,7 +15,15 @@ class Admin extends BaseController
 
     public function index()
     {
-        return $this->view('admin.index');
+        if (!empty($_SESSION['auth'])) {
+            if ($_SESSION['auth']['role'] == 1 && $_SESSION['auth']['status'] == 1) {
+                return $this->view('admin.index');
+            } else if ($_SESSION['auth']['role'] == 1 && $_SESSION['auth']['status'] == 0) {
+                echo "<h2>Tài khoản của bạn đang chờ duyệt</h2>";
+            } else {
+                echo "<h2>Không có quyền truy cập trang quản trị</h2>";
+            }
+        }
     }
 
     public function productManage()

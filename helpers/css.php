@@ -1,5 +1,5 @@
 <?php
-$css_file = $domainPage . "/public/css/abc.css";
+$css_file = $domainPage . "/public/css/main.css";
 $dashboard_css = $domainPage . "/public/css/dashboard.css";
 $css_responsive = $domainPage . "/public/css/reponsive.css";
 $grid_css = $domainPage . "/public/css/bootstrap-grid.css";

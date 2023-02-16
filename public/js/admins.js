@@ -28,6 +28,12 @@ if (arrPath[arrPath.length - 1] == "productManage") {
       item.classList.add("active");
     }
   });
+} else if (arrPath[arrPath.length - 1] == "admin_statistical") {
+  dashBoard_item.forEach((item) => {
+    if (item.querySelector("a").innerText == "Thống kê") {
+      item.classList.add("active");
+    }
+  });
 } else {
   dashBoard_item[0].classList.add("active");
 }

@@ -45,11 +45,11 @@ class Product extends BaseController
             $this->productModel->upView($id);
         }
 
+
         return $this->view('frontend.pages.detailPrd', [
             'detailPrd' => $detailPrd,
             'listProduct' => $listProduct,
-            'listCmt' => $listCmt
-
+            'listCmt' => $listCmt,
         ]);
     }
 }

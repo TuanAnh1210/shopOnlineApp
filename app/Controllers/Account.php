@@ -116,6 +116,7 @@ class Account extends BaseController
     {
         if (isset($_SESSION['auth'])) {
             unset($_SESSION['auth']);
+            unset($_SESSION['totalPrdInCart']);
             $url = $GLOBALS['domainPage'];
 
 

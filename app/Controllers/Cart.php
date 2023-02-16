@@ -11,7 +11,15 @@ class Cart extends BaseController
 
     public function index()
     {
-        return $this->view('frontend.pages.cart');
+        if (!empty($_SESSION['auth'])) {
+            $id = $_SESSION['auth']['id'];
+
+            $data = $this->cartModel->getAll($id);
+            return $this->view('frontend.pages.cart', [
+                'data' => $data
+            ]);
+        }
+
     }
 
     public function addToCart()
@@ -20,6 +28,24 @@ class Cart extends BaseController
             $quantity = $_POST['quantityPrd'];
             $product_id = $_POST['idPrd'];
             $user_id = $_SESSION['auth']['id'];
+
+            $data = [
+                "quantity" => $quantity,
+                "product_id" => $product_id,
+                "user_id" => $user_id,
+                "order_status" => 0
+            ];
+
+
+            $this->cartModel->addCart($data);
+
+            // update quantity total product 
+            $totalPrdInCart = $this->cartModel->getTotalPrd($user_id);
+            $_SESSION['totalPrdInCart'] = $totalPrdInCart;
+
+
+            $url = $GLOBALS['domainPage'] . "/product/detail?prd&id=$product_id";
+            header("location: $url");
         }
     }
 }

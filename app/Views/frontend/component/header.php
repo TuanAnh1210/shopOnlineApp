@@ -8,7 +8,8 @@
     <title>Document</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="<?= $GLOBALS["domainPage"] ?>/public/lib/owl/owl.theme.default.min.css">
     <link rel="stylesheet" href="<?= $GLOBALS["domainPage"] ?>/public/lib/owl/owl.carousel.min.css">
@@ -24,25 +25,27 @@
             <div class="header__heading--wrapper">
                 <div class="container">
                     <h2 class="header__heading">
-                        <?php if (empty($_SESSION)) : ?>
+                        <?php if (empty($_SESSION['auth'])) : ?>
 
-                            <a href="<?= $GLOBALS["domainPage"] ?>/account">
-                                <span>Đăng nhập</span>
-                                <i class="fa-regular fa-circle-user"></i>
-                            </a>
+                        <a href="<?= $GLOBALS["domainPage"] ?>/account">
+                            <span>Đăng nhập</span>
+                            <i class="fa-regular fa-circle-user"></i>
+                        </a>
                         <?php endif ?>
 
-                        <?php if (!empty($_SESSION)) : ?>
-                            <div class="login__user">
-                                <span>Hi, <?php echo $_SESSION['auth']['fullname'] ?></span>
-                                <img style="width: 28px; height: 28px; border-radius: 50%; display: inline-block;" src="<?= $GLOBALS["domainPage"] ?>/uploads/<?php echo $_SESSION['auth']['avatar'] ?>" alt="">
-                                <ul class="login__actions">
-                                    <li><a href="#">Tài khoản</a></li>
-                                    <li><a href="#">Đơn hàng</a></li>
-                                    <li><a href="#">Admin</a></li>
-                                    <li><a href="<?= $GLOBALS["domainPage"] ?>/account/logout">Đăng xuất</a></li>
-                                </ul>
-                            </div>
+                        <?php if (!empty($_SESSION['auth'])) : ?>
+                        <div class="login__user">
+                            <span>Hi, <?php echo $_SESSION['auth']['fullname'] ?></span>
+                            <img style="width: 28px; height: 28px; border-radius: 50%; display: inline-block;"
+                                src="<?= $GLOBALS["domainPage"] ?>/uploads/<?php echo $_SESSION['auth']['avatar'] ?>"
+                                alt="">
+                            <ul class="login__actions">
+                                <li><a href="<?= $GLOBALS["domainPage"] ?>/account/info">Tài khoản</a></li>
+                                <li><a href="#">Đơn hàng</a></li>
+                                <li><a href="<?= $GLOBALS["domainPage"] ?>/admin">Admin</a></li>
+                                <li><a href="<?= $GLOBALS["domainPage"] ?>/account/logout">Đăng xuất</a></li>
+                            </ul>
+                        </div>
                         <?php endif ?>
 
                     </h2>
@@ -66,7 +69,8 @@
                         <a data-item="" class="header__item" href="<?= $GLOBALS["domainPage"] ?>/">Trang chủ</a>
                         <a data-item="product" class="header__item" href="<?= $GLOBALS["domainPage"] ?>/product">Sản
                             phẩm</a>
-                        <a data-item="gioi-thieu" class="header__item" href="<?= $GLOBALS["domainPage"] ?>/gioi-thieu">Giới
+                        <a data-item="gioi-thieu" class="header__item"
+                            href="<?= $GLOBALS["domainPage"] ?>/gioi-thieu">Giới
                             thiệu</a>
 
                         <a data-item="lien-he" class="header__item" href="<?= $GLOBALS["domainPage"] ?>/lien-he">Liên
@@ -74,12 +78,25 @@
                     </nav>
                     <div class="header__actions">
 
-                        <p class="header__carts">
+                        <a href="<?= $GLOBALS["domainPage"] ?>/cart" class="header__carts">
                             <i class="fa-solid fa-cart-shopping"></i>
-                            <span class="quantity__carts">12</span>
-                        </p>
+                            <span class="quantity__carts">
+                                <?php
+                                if (!empty($_SESSION['totalPrdInCart'])) {
+                                    echo ($_SESSION['totalPrdInCart'][0]['totalPrd']);
+                                } else {
+                                    echo 0;
+                                }
+
+                                ?>
+                            </span>
+                        </a>
                     </div>
                 </div>
             </div>
 
         </header>
+
+        <script>
+
+        </script>

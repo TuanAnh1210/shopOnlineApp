@@ -1,7 +1,6 @@
 <?php
 
 ipView('frontend.component.header');
-$test = date("Y-m-d H:i:s");
 ?>
 
 
@@ -89,30 +88,28 @@ $test = date("Y-m-d H:i:s");
 
         <div class="owl-carousel owl-theme">
             <?php foreach ($data as $index => $item) : ?>
-            <a href="<?= $GLOBALS['domainPage'] ?>/product/detail?prd&id=<?= $item['id'] ?>">
-                <div class="product__item">
-                    <div class="product__img"><img src="<?= $GLOBALS['domainPage'] ?>/uploads/<?= $item['image'] ?>"
-                            alt="">
-                    </div>
-                    <h3 class="product__name"><?= $item['name'] ?></h3>
-                    <div style="display: flex; justify-content: space-between;">
-                        <p class="product__price"><?= number_format($item['price'], 0, "", ".") ?>đ</p>
-                        <p style="font-size: 12px; color: #555;"><?= $item['bought'] ?> đã bán</p>
-                    </div>
-                    <span <?php
+                <a href="<?= $GLOBALS['domainPage'] ?>/product/detail?prd&id=<?= $item['id'] ?>">
+                    <div class="product__item">
+                        <div class="product__img"><img src="<?= $GLOBALS['domainPage'] ?>/uploads/<?= $item['image'] ?>" alt="">
+                        </div>
+                        <h3 class="product__name"><?= $item['name'] ?></h3>
+                        <div style="display: flex; justify-content: space-between;">
+                            <p class="product__price"><?= number_format($item['price'], 0, "", ".") ?>đ</p>
+                            <p style="font-size: 12px; color: #555;"><?= $item['bought'] ?> đã bán</p>
+                        </div>
+                        <span <?php
                                 if (!$item['discount']) {
                                     echo "hidden";
                                 }
                                 ?> class="product__discount"> -<?= $item['discount'] ?>%</span>
 
-                    <span <?php
+                        <span <?php
                                 if (!$item['discount']) {
                                     echo "hidden";
                                 }
-                                ?> class="product__discount product__viewed"> <?= $item['view'] ?><i
-                            class="fa-regular fa-eye"></i></span>
-                </div>
-            </a>
+                                ?> class="product__discount product__viewed"> <?= $item['view'] ?><i class="fa-regular fa-eye"></i></span>
+                    </div>
+                </a>
 
             <?php endforeach ?>
 
@@ -133,31 +130,30 @@ $test = date("Y-m-d H:i:s");
 
         <div class="owl-carousel owl-theme">
             <?php foreach ($bestseller as $index => $item) :  ?>
-            <a href="<?= $GLOBALS['domainPage'] ?>/product/detail?prd&id=<?= $item['id'] ?>">
-                <div class="product__item">
-                    <div class="product__img"><img src="<?= $GLOBALS['domainPage'] ?>/uploads/<?= $item['image'] ?>"
-                            alt="">
-                    </div>
-                    <h3 class="product__name"><?= $item['name'] ?></h3>
-                    <div style="display: flex; justify-content: space-between;">
-                        <p class="product__price"><?= number_format($item['price'], 0, "", ".") ?>đ</p>
-                        <p style="font-size: 12px; color: #555;"><?= $item['bought'] ?> đã bán</p>
-                    </div>
-                    <span <?php
+                <a href="<?= $GLOBALS['domainPage'] ?>/product/detail?prd&id=<?= $item['id'] ?>">
+                    <div class="product__item">
+                        <div class="product__img"><img src="<?= $GLOBALS['domainPage'] ?>/uploads/<?= $item['image'] ?>" alt="">
+                        </div>
+                        <h3 class="product__name"><?= $item['name'] ?></h3>
+                        <div style="display: flex; justify-content: space-between;">
+                            <p class="product__price"><?= number_format($item['price'], 0, "", ".") ?>đ</p>
+                            <p style="font-size: 12px; color: #555;"><?= $item['bought'] ?> đã bán</p>
+                        </div>
+                        <span <?php
                                 if (!$item['discount']) {
                                     echo "hidden";
                                 }
                                 ?> class="product__discount"> -<?= $item['discount'] ?>%</span>
 
-                    <span <?php
+                        <span <?php
                                 if (!$item['discount']) {
                                     echo "hidden";
                                 }
                                 ?> class="product__discount product__viewed"> <?= $item['view'] ?>
-                        <i class="fa-regular fa-eye"></i>
-                    </span>
-                </div>
-            </a>
+                            <i class="fa-regular fa-eye"></i>
+                        </span>
+                    </div>
+                </a>
 
             <?php endforeach  ?>
 
@@ -204,60 +200,60 @@ $test = date("Y-m-d H:i:s");
 </div>
 
 <style>
-.owl-nav {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    transform: translateY(-50%);
-    display: flex;
-    justify-content: space-between;
-}
+    .owl-nav {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: space-between;
+    }
 
-.owl-prev,
-.owl-next {
-    background-color: #ccc !important;
-    width: 42px;
-    height: 42px;
-    border-radius: 50% !important;
-    display: flex;
-    align-items: center;
-}
+    .owl-prev,
+    .owl-next {
+        background-color: #ccc !important;
+        width: 42px;
+        height: 42px;
+        border-radius: 50% !important;
+        display: flex;
+        align-items: center;
+    }
 
-.owl-next span,
-.owl-prev span {
-    font-size: 34px;
-    display: inline-block;
-    height: 100%;
-    line-height: 36px;
+    .owl-next span,
+    .owl-prev span {
+        font-size: 34px;
+        display: inline-block;
+        height: 100%;
+        line-height: 36px;
 
-}
+    }
 </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="<?= $GLOBALS["domainPage"] ?>/public/lib/owl/owl.carousel.min.js"></script>
 
 <script>
-$(document).ready(function() {
-    $(".owl-carousel").owlCarousel();
-});
-$(".owl-carousel").owlCarousel({
-    loop: true,
-    margin: 28,
-    // autoplay: true,
-    // autoplayTimeout: 3000,
-    nav: true,
-    responsive: {
-        0: {
-            items: 1,
+    $(document).ready(function() {
+        $(".owl-carousel").owlCarousel();
+    });
+    $(".owl-carousel").owlCarousel({
+        loop: true,
+        margin: 28,
+        // autoplay: true,
+        // autoplayTimeout: 3000,
+        nav: true,
+        responsive: {
+            0: {
+                items: 1,
+            },
+            600: {
+                items: 2,
+            },
+            1000: {
+                items: 4,
+            },
         },
-        600: {
-            items: 2,
-        },
-        1000: {
-            items: 4,
-        },
-    },
-});
+    });
 </script>
 <?php ipView('frontend.component.footer') ?>

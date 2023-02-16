@@ -26,7 +26,8 @@ class Comment extends BaseController
 
             $this->cmtModel->addCmt($data);
 
-            header("location: http://localhost/du_an_mau/product/detail?prd&id=$product_id");
+            $url = $GLOBALS['domainPage'] . "/product/detail?prd&id=$product_id";
+            header("location: $url");
         }
     }
 
@@ -38,7 +39,8 @@ class Comment extends BaseController
 
             $this->cmtModel->deleteCmt($id);
 
-            header("location: http://localhost/du_an_mau/product/detail?prd&id=$idPrd");
+            $url = $GLOBALS['domainPage'] . "/product/detail?prd&id=$idPrd";
+            header("location: $url");
         }
     }
 
