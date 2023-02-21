@@ -31,6 +31,7 @@ class Account extends BaseController
                 header("location: $url");
             } else if ($_SESSION['auth']['role'] == 1 && $_SESSION['auth']['status'] == 0) {
                 echo "<script>alert('Tài khoản của bạn đang đợi duyệt !')</script>";
+                unset($_SESSION['auth']);
             }
         }
         return $this->view('frontend.pages.account', [
