@@ -5,7 +5,9 @@ class CartModel extends BaseModel
 
     public function getAll($id)
     {
-        $sql = "SELECT orders.id as idPrd ,name, price, image, COUNT(orders.quantity) as totalProduct FROM orders JOIN products ON orders.product_id = products.id WHERE orders.user_id = $id GROUP BY products.name";
+        // $sql = "SELECT orders.id as idPrd ,name, price, image, COUNT(orders.quantity) as totalProduct FROM orders JOIN products ON orders.product_id = products.id WHERE orders.user_id = $id GROUP BY products.name";
+
+        $sql = "SELECT orders.id as idPrd ,name, price, image, orders.quantity as totalProduct FROM orders JOIN products ON orders.product_id = products.id WHERE orders.user_id = $id";
 
         return $this->query_all($sql);
     }
@@ -20,5 +22,21 @@ class CartModel extends BaseModel
     public function addCart($data)
     {
         return $this->create(self::TABLE, $data);
+    }
+
+    public function getInfoOrder($id)
+    {
+        $sql = "SELECT orders.id as idOrder, orders.quantity as quantityOrd, order_status ,image, name FROM orders JOIN products ON orders.product_id = products.id WHERE user_id = $id";
+        return $this->query_all($sql);
+    }
+
+    public function updateQuantityPrd($data, $id)
+    {
+        return $this->update(self::TABLE, $data, $id);
+    }
+
+    public function full()
+    {
+        return $this->all(self::TABLE);
     }
 }

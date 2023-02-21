@@ -43,7 +43,7 @@
 
                 </div>
                 <button class="btn__login">Đăng nhập</button>
-                <a class="forgot__pass" href="#">Quên mật khẩu</a>
+                <a class="forgot__pass" href="<?= $GLOBALS["domainPage"] ?>/account/forgotPass">Quên mật khẩu</a>
                 <a class="forgot__pass" href="<?= $GLOBALS["domainPage"] ?>">Trang chủ</a>
             </form>
             <form class="form__regis" action="<?= $GLOBALS["domainPage"] ?>/account/handleRegisAcc" method="POST">
@@ -101,196 +101,196 @@
 
 
     <script>
-    const regisJs = document.querySelector('.regisJs')
-    const loginJs = document.querySelector('.loginJs')
-    const isInfoRegis = document.querySelector('.isInfoRegis')
-    const isInfoLogin = document.querySelector('.isInfoLogin')
-    const overlay_container = document.querySelector('.overlay_container')
-    const form__login = document.querySelector('.form__login')
-    const form__regis = document.querySelector('.form__regis')
+        const regisJs = document.querySelector('.regisJs')
+        const loginJs = document.querySelector('.loginJs')
+        const isInfoRegis = document.querySelector('.isInfoRegis')
+        const isInfoLogin = document.querySelector('.isInfoLogin')
+        const overlay_container = document.querySelector('.overlay_container')
+        const form__login = document.querySelector('.form__login')
+        const form__regis = document.querySelector('.form__regis')
 
-    regisJs.onclick = () => {
-        isInfoRegis.classList.add('close')
-        isInfoLogin.classList.remove('close')
-        overlay_container.classList.add('isRegis')
-        form__login.classList.add('ani')
-        form__regis.classList.remove('ani')
-    }
-
-    loginJs.onclick = () => {
-        isInfoRegis.classList.remove('close')
-        isInfoLogin.classList.add('close')
-        overlay_container.classList.remove('isRegis')
-        form__regis.classList.add('ani')
-        form__login.classList.remove('ani')
-
-    }
-
-
-    // handle get data from db and convert arr php to arr js
-    const listUser = <?= json_encode($listUser) ?>
-
-    listUser.forEach(element => {
-        for (let i in element) {
-            if (!isNaN(Number(i))) {
-                delete element[i];
-            }
-        }
-    });
-
-
-
-    const formFieldLogin = ["emailLogin", "passLogin"]
-    const form_login = document.querySelector('.form__login')
-
-    // check email & pass true then login
-    const checkExist = () => {
-        const emailLogin = document.querySelector("#emailLogin")
-        const passLogin = document.querySelector("#passLogin")
-
-        const isSuccess = listUser.some(user => user.email == emailLogin.value && user.password == passLogin.value)
-
-        return isSuccess
-    }
-
-    // show error
-    const showError = (ele, message) => {
-        ele.nextElementSibling.innerHTML = message
-        ele.style.border = "1px solid red"
-    }
-
-    const hideError = (ele) => {
-        ele.nextElementSibling.innerHTML = ""
-        ele.style.border = ""
-    }
-
-    const regEmail = /^\w+@(\w+\.\w+){1,2}$/;
-
-    form_login.onsubmit = (e) => {
-        e.preventDefault()
-        let isError = true
-        formFieldLogin.forEach(field => {
-            const ele = document.getElementById(field)
-
-            if (field == 'emailLogin') {
-                if (!regEmail.test(ele.value.trim())) {
-                    showError(ele, "Email không đúng định dạng")
-                    isError = false
-                }
-            }
-
-            if (ele.value.trim() == "") {
-                showError(ele, "Dữ liệu không được để trống")
-                isError = false
-            }
-
-            ele.oninput = () => {
-                hideError(ele)
-            }
-        })
-
-        if (isError) {
-            if (checkExist()) {
-                form_login.submit()
-
-            } else {
-                alert('Email hoặc mật khẩu không chính xác !')
-            }
+        regisJs.onclick = () => {
+            isInfoRegis.classList.add('close')
+            isInfoLogin.classList.remove('close')
+            overlay_container.classList.add('isRegis')
+            form__login.classList.add('ani')
+            form__regis.classList.remove('ani')
         }
 
-    }
+        loginJs.onclick = () => {
+            isInfoRegis.classList.remove('close')
+            isInfoLogin.classList.add('close')
+            overlay_container.classList.remove('isRegis')
+            form__regis.classList.add('ani')
+            form__login.classList.remove('ani')
+
+        }
 
 
-    // check email regis exist then submit form regis
-    const checkEmailExist = (emailRegis) => listUser.some(item => item.email == emailRegis)
+        // handle get data from db and convert arr php to arr js
+        const listUser = <?= json_encode($listUser) ?>
 
-
-    // handle regis form
-    const field_regis = [
-        "regis_name",
-        "regis_email",
-        "regis_pass",
-        "regis_repass",
-
-    ]
-
-    const message__delete = document.querySelector(".message__delete")
-    const message__succ = document.querySelector(".message__succ")
-    const yes = document.querySelector(".yes")
-    const yes_succ = document.querySelector(".yes_succ")
-
-
-
-    form__regis.onsubmit = (e) => {
-        e.preventDefault()
-
-        const regis_pass = document.querySelector("#regis_pass")
-        const regis_repass = document.querySelector("#regis_repass")
-        const regis_email = document.querySelector("#regis_email")
-
-        let isError = true
-        field_regis.forEach(field => {
-            const ele = document.getElementById(field);
-
-            if (field == "regis_name") {
-                if (ele.value.trim().length < 4) {
-                    showError(ele, "Họ tên tối thiểu 4 kí tự");
-                    isError = false
+        listUser.forEach(element => {
+            for (let i in element) {
+                if (!isNaN(Number(i))) {
+                    delete element[i];
                 }
             }
-
-            if (field == 'regis_email') {
-                if (!regEmail.test(ele.value.trim())) {
-                    showError(ele, "Email không đúng định dạng");
-                    isError = false
-                }
-            }
-
-            if (field == "regis_pass") {
-                if (ele.value.trim().length < 6) {
-                    showError(ele, "Mật khẩu tối thiểu 6 kí tự");
-                    isError = false
-                }
-            }
-
-            if (regis_pass.value != regis_repass.value) {
-                showError(regis_pass, "Mật khẩu không khớp");
-                showError(regis_repass, "Mật khẩu không khớp");
-                isError = false
-            }
+        });
 
 
-            if (ele.value.trim() == "") {
-                showError(ele, "Dữ liệu không được để trống")
-                isError = false
-            }
 
-            ele.oninput = () => {
-                hideError(ele)
+        const formFieldLogin = ["emailLogin", "passLogin"]
+        const form_login = document.querySelector('.form__login')
 
-            }
-        })
+        // check email & pass true then login
+        const checkExist = () => {
+            const emailLogin = document.querySelector("#emailLogin")
+            const passLogin = document.querySelector("#passLogin")
 
-        if (isError) {
-            if (!checkEmailExist(regis_email.value)) {
-                if (document.querySelector("#userIpt").checked) {
-                    message__succ.classList.add("open")
-                    yes_succ.onclick = () => {
-                        form__regis.submit()
+            const isSuccess = listUser.some(user => user.email == emailLogin.value && user.password == passLogin.value)
 
-                    }
-                } else if (document.querySelector("#adminIpt").checked) {
-                    message__delete.classList.add('open')
-                    yes.onclick = () => {
+            return isSuccess
+        }
 
-                        form__regis.submit()
+        // show error
+        const showError = (ele, message) => {
+            ele.nextElementSibling.innerHTML = message
+            ele.style.border = "1px solid red"
+        }
+
+        const hideError = (ele) => {
+            ele.nextElementSibling.innerHTML = ""
+            ele.style.border = ""
+        }
+
+        const regEmail = /^\w+@(\w+\.\w+){1,2}$/;
+
+        form_login.onsubmit = (e) => {
+            e.preventDefault()
+            let isError = true
+            formFieldLogin.forEach(field => {
+                const ele = document.getElementById(field)
+
+                if (field == 'emailLogin') {
+                    if (!regEmail.test(ele.value.trim())) {
+                        showError(ele, "Email không đúng định dạng")
+                        isError = false
                     }
                 }
-            } else {
-                alert("Email này đã tồn tại , vui lòng dùng email khác")
+
+                if (ele.value.trim() == "") {
+                    showError(ele, "Dữ liệu không được để trống")
+                    isError = false
+                }
+
+                ele.oninput = () => {
+                    hideError(ele)
+                }
+            })
+
+            if (isError) {
+                if (checkExist()) {
+                    form_login.submit()
+
+                } else {
+                    alert('Email hoặc mật khẩu không chính xác !')
+                }
+            }
+
+        }
+
+
+        // check email regis exist then submit form regis
+        const checkEmailExist = (emailRegis) => listUser.some(item => item.email == emailRegis)
+
+
+        // handle regis form
+        const field_regis = [
+            "regis_name",
+            "regis_email",
+            "regis_pass",
+            "regis_repass",
+
+        ]
+
+        const message__delete = document.querySelector(".message__delete")
+        const message__succ = document.querySelector(".message__succ")
+        const yes = document.querySelector(".yes")
+        const yes_succ = document.querySelector(".yes_succ")
+
+
+
+        form__regis.onsubmit = (e) => {
+            e.preventDefault()
+
+            const regis_pass = document.querySelector("#regis_pass")
+            const regis_repass = document.querySelector("#regis_repass")
+            const regis_email = document.querySelector("#regis_email")
+
+            let isError = true
+            field_regis.forEach(field => {
+                const ele = document.getElementById(field);
+
+                if (field == "regis_name") {
+                    if (ele.value.trim().length < 4) {
+                        showError(ele, "Họ tên tối thiểu 4 kí tự");
+                        isError = false
+                    }
+                }
+
+                if (field == 'regis_email') {
+                    if (!regEmail.test(ele.value.trim())) {
+                        showError(ele, "Email không đúng định dạng");
+                        isError = false
+                    }
+                }
+
+                if (field == "regis_pass") {
+                    if (ele.value.trim().length < 6) {
+                        showError(ele, "Mật khẩu tối thiểu 6 kí tự");
+                        isError = false
+                    }
+                }
+
+                if (regis_pass.value != regis_repass.value) {
+                    showError(regis_pass, "Mật khẩu không khớp");
+                    showError(regis_repass, "Mật khẩu không khớp");
+                    isError = false
+                }
+
+
+                if (ele.value.trim() == "") {
+                    showError(ele, "Dữ liệu không được để trống")
+                    isError = false
+                }
+
+                ele.oninput = () => {
+                    hideError(ele)
+
+                }
+            })
+
+            if (isError) {
+                if (!checkEmailExist(regis_email.value)) {
+                    if (document.querySelector("#userIpt").checked) {
+                        message__succ.classList.add("open")
+                        yes_succ.onclick = () => {
+                            form__regis.submit()
+
+                        }
+                    } else if (document.querySelector("#adminIpt").checked) {
+                        message__delete.classList.add('open')
+                        yes.onclick = () => {
+
+                            form__regis.submit()
+                        }
+                    }
+                } else {
+                    alert("Email này đã tồn tại , vui lòng dùng email khác")
+                }
             }
         }
-    }
     </script>
 </body>
 

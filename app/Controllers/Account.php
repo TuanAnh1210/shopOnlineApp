@@ -3,12 +3,16 @@ class Account extends BaseController
 {
 
     private $accountModel;
+    private $cartModel;
 
 
     public function __construct()
     {
         $this->loadModel('AccountModel');
         $this->accountModel = new AccountModel;
+
+        $this->loadModel('CartModel');
+        $this->cartModel = new CartModel;
     }
 
     public function index()
@@ -109,7 +113,13 @@ class Account extends BaseController
 
     public function info()
     {
-        return $this->view('frontend.pages.info');
+        if (!empty($_SESSION['auth'])) {
+            $id = $_SESSION['auth']['id'];
+            $data = $this->cartModel->getInfoOrder($id);
+        }
+        return $this->view('frontend.pages.info', [
+            "data" =>  $data
+        ]);
     }
 
     public function logout()
@@ -117,6 +127,43 @@ class Account extends BaseController
         if (isset($_SESSION['auth'])) {
             unset($_SESSION['auth']);
             unset($_SESSION['totalPrdInCart']);
+            $url = $GLOBALS['domainPage'];
+
+
+            header("location:  $url");
+        }
+    }
+
+
+    public function forgotPass()
+    {
+        if (!empty($_POST["emailIpt"])) {
+            $emailCheck = $_POST["emailIpt"];
+            mailAuth('forgotPass', [
+                "emailCheck" => $emailCheck
+            ]);
+        }
+        return $this->view("frontend.pages.forgotPass");
+    }
+
+    public function authForgotPass()
+    {
+        if (!empty($_POST['emailUser'])) {
+            $emailUser = $_POST['emailUser'];
+            return $this->view("frontend.pages.updatePass", [
+                "emailUser" => $emailUser
+            ]);
+        }
+    }
+
+    public function updatePassword()
+    {
+        if (!empty($_POST['passIpt']) && !empty($_POST['emailIpt'])) {
+            $password = $_POST['passIpt'];
+            $email = $_POST['emailIpt'];
+
+
+            $this->accountModel->updateNewPass($password, $email);
             $url = $GLOBALS['domainPage'];
 
 

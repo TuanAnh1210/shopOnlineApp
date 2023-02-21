@@ -41,22 +41,7 @@
                         </div>
 
                         <div class="show__item-cart">
-                            <div class="box__courses--inner cart">
-                                <img src="https://aristino.com/Data/ResizeImage/images/product/so-mi-ngan-tay/1ss101s2/ao-so-mi-ngan-tay-nam-aristino-1SS101S2-03x900x900x4.webp"
-                                    alt="">
-                                <div class="box__courses--info cart">
-                                    <h4>ReactJS</h4>
-                                    <p>Đơn giá: 1.222.222d</p>
-                                </div>
-                                <div class="detail__quantity--actions">
-                                    <label style="font-size: 14px;" for="">Số lượng:</label>
-                                    <input class="detail__quantity--ipt small" type="number" value="1">
-                                </div>
 
-                                <button class="cart__btn--delete button-35">Xóa</button>
-                                <input class="cart__btn--check" type="checkbox">
-
-                            </div>
 
                         </div>
                     </div>

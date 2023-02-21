@@ -19,7 +19,6 @@ class Cart extends BaseController
                 'data' => $data
             ]);
         }
-
     }
 
     public function addToCart()
@@ -29,6 +28,9 @@ class Cart extends BaseController
             $product_id = $_POST['idPrd'];
             $user_id = $_SESSION['auth']['id'];
 
+            // fix: check update quantity orders
+
+
             $data = [
                 "quantity" => $quantity,
                 "product_id" => $product_id,
@@ -36,8 +38,23 @@ class Cart extends BaseController
                 "order_status" => 0
             ];
 
+            $preValue = $this->cartModel->full();
 
-            $this->cartModel->addCart($data);
+
+            if ($preValue[0]["product_id"] == $product_id && $preValue[0]["user_id"] == $user_id && $preValue[0]["order_status"] == 0) {
+                $data = [
+                    "quantity" => $quantity + $preValue[0]["product_id"],
+                ];
+
+
+                $id = $preValue[0]["id"];
+                $this->cartModel->updateQuantityPrd($data, $id);
+            } else {
+                $this->cartModel->addCart($data);
+            }
+
+
+
 
             // update quantity total product 
             $totalPrdInCart = $this->cartModel->getTotalPrd($user_id);

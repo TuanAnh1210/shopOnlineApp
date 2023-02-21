@@ -5,6 +5,14 @@
     font-family: 'Noto Sans', sans-serif;
 }
 
+.fixText {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-left: 18px;
+}
+
 .owl-dots {
     display: none !important;
 }

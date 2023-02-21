@@ -26,7 +26,7 @@ try {
     //Recipients
     $mail->setFrom('braintech0852131210@gmail.com', 'BrainTech');
 
-    $mail->addAddress($arrInfo['email'], 'tuan anh'); // Add a recipient
+    $mail->addAddress($emailCheck, 'tuan anh'); // Add a recipient
     // $mail->addAddress('tuananh1210085213@gmail.com', 'tuan em'); // Add a recipient
     // Name is optional
 
@@ -135,18 +135,12 @@ try {
 
 <body>
     <div class="form__wrapper">
-        <form class="authForm" action="http://localhost/du_an_mau/account/authSuccess" method="POST">
+        <form class="authForm" action="http://localhost/du_an_mau/account/authForgotPass" method="POST">
             <h3 class="authTitle">Chúng tôi vừa gửi mã xác minh tới email của bạn !</h3>
             <p class="authSub">Vui lòng nhập mã xác minh</p>
             <input required type="text" class="authCode" placeholder="Nhập mã xác minh...">
-            <input hidden type="text" value="<?= $arrInfo['email'] ?>" name="emailUser">
-            <input hidden type="text" value="<?= $arrInfo['fullname'] ?>" name="fullnameUser">
-            <input hidden type="text" value="<?= $arrInfo['avatar'] ?>" name="avatarUser">
-            <input hidden type="text" value="<?= $arrInfo['address'] ?>" name="addressUser">
-            <input hidden type="text" value="<?= $arrInfo['password'] ?>" name="passwordUser">
-            <input hidden type="text" value="<?= $arrInfo['phone'] ?>" name="phoneUser">
-            <input hidden type="text" value="<?= $arrInfo['status'] ?>" name="statusUser">
-            <input hidden type="text" value="<?= $arrInfo['role'] ?>" name="roleUser">
+            <input hidden type="text" value="<?= $emailCheck ?>" name="emailUser">
+
             <button class="authBtn">Xác minh</button>
         </form>
     </div>
